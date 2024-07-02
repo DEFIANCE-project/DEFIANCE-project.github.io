@@ -1,0 +1,6 @@
+<map id="ns3::TimestampedDataDeque::Size" name="ns3::TimestampedDataDeque::Size">
+<area shape="rect" id="node1" title=" " alt="" coords="269,71,485,112"/>
+<area shape="rect" id="node2" href="$classns3_1_1_timestamped_data_deque.html#a840b624f3f04406f83d6ccca0cb5f876" title="Get all data entries from the deque." alt="" coords="5,5,221,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_history_container.html#ad207d4879c2fde4ef26c70d4a2763e39" title="Retrieve the size of the combined history deque. The size can be larger than the sum of the sizes of ..." alt="" coords="32,71,195,112"/>
+<area shape="rect" id="node4" href="$classns3_1_1_history_container.html#a99616aec5bfb4b7256a87254d5fdfc9c" title="Push data into a certain history deque. If no history with the given ID exists, a new history is crea..." alt="" coords="32,136,195,177"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ns3::PendulumCart::SetAngle" name="ns3::PendulumCart::SetAngle">
+<area shape="rect" id="node1" title="Set the angle of the cart in radians: ensures that the angle stays between &#45;pi and pi." alt="" coords="439,5,592,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_pendulum_cart.html#a230ce0545e75d93bedec9f9a271ee836" title="Simulates the physics of the pendulum&#45;cart by using the equations of motion of an inverted pendulum...." alt="" coords="237,5,391,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_environment_creator.html#a0835d2e79a3d7c84e084dd3a0c01ce49" title="Create numCarts cart nodes and place them at (0, 0). Schedule the start of their physics simulation." alt="" coords="5,5,189,47"/>
+</map>

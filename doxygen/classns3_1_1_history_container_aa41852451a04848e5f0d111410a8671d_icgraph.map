@@ -1,0 +1,6 @@
+<map id="ns3::HistoryContainer::GetNewestByID" name="ns3::HistoryContainer::GetNewestByID">
+<area shape="rect" id="node1" title="Retrieve the latest n collected data entries of one history deque." alt="" coords="415,39,577,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_history_container.html#ab1fa72494ba71cff900c6ce9ec69fcc2" title="Aggregate the latest n data entries of the specified history deque." alt="" coords="204,5,367,47"/>
+<area shape="rect" id="node4" href="$classns3_1_1_history_container.html#ad99a80a7b9b80c2a9154ba44756bfe34" title="Retrieve the latest data entry of a history deque." alt="" coords="204,71,367,112"/>
+<area shape="rect" id="node3" href="$classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e" title="Called when an observation was received. The observation was already stored in m_obsDataStruct...." alt="" coords="5,5,156,47"/>
+</map>

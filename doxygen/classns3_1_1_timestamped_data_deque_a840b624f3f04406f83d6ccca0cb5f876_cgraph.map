@@ -1,0 +1,5 @@
+<map id="ns3::TimestampedDataDeque::GetAll" name="ns3::TimestampedDataDeque::GetAll">
+<area shape="rect" id="node1" title="Get all data entries from the deque." alt="" coords="5,39,221,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_timestamped_data_deque.html#a0152a2594b4e4fab05db7760e01ff568" title="Get the count newest data entries from the deque." alt="" coords="269,5,485,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_timestamped_data_deque.html#a6324bdad78346d6e69db4246518cc6b3" title=" " alt="" coords="269,71,485,112"/>
+</map>

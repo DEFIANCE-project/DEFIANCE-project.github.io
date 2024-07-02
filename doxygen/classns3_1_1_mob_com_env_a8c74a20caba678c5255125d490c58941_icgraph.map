@@ -1,0 +1,4 @@
+<map id="ns3::MobComEnv::AddTraffic" name="ns3::MobComEnv::AddTraffic">
+<area shape="rect" id="node1" title="Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e..." alt="" coords="276,13,483,39"/>
+<area shape="rect" id="node2" href="$classns3_1_1_power_control_mob_com_env.html#a3d8be8f03c61d85520c1dcabbfde472e" title="Constructor for the MobComEnv class." alt="" coords="5,5,228,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ns3::MobComEnv::GetDeviceManager" name="ns3::MobComEnv::GetDeviceManager">
+<area shape="rect" id="node1" title=" " alt="" coords="276,39,487,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_power_control_mob_com_env.html#a4cf373cd450663c96eb80ce500e66680" title="Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e..." alt="" coords="5,5,228,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_power_control_mob_com_env.html#a00b77138ebb649809e854578050eb479" title="Register the necessary callbacks for tracing." alt="" coords="5,71,228,112"/>
+</map>

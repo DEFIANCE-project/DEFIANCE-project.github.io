@@ -1,0 +1,4 @@
+<map id="ns3::HistoryContainer::GetNewestOfCombinedHistory" name="ns3::HistoryContainer::GetNewestOfCombinedHistory">
+<area shape="rect" id="node1" title="Retrieve the latest n data entries of all history deques." alt="" coords="5,5,236,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_timestamped_data_deque.html#a0152a2594b4e4fab05db7760e01ff568" title="Get the count newest data entries from the deque." alt="" coords="284,5,500,47"/>
+</map>

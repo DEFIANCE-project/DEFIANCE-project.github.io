@@ -1,0 +1,6 @@
+<map id="ns3::PowerControlMobComEnv::AddTraffic" name="ns3::PowerControlMobComEnv::AddTraffic">
+<area shape="rect" id="node1" title="Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e..." alt="" coords="5,39,228,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html#abf49c5892a588e10f488451c7461826a" title="Attach user equipment to base stations. By default, each UE is attached to the closest base station." alt="" coords="277,5,486,47"/>
+<area shape="rect" id="node4" href="$classns3_1_1_mob_com_env.html#a5ef7d57148ccade5aff8c551d9e960f7" title=" " alt="" coords="276,71,487,112"/>
+<area shape="rect" id="node3" href="$classns3_1_1_mob_com_env.html#a07c9f8210ee2e346a9ade83c8e748277" title=" " alt="" coords="535,13,763,39"/>
+</map>

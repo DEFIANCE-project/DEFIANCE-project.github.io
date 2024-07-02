@@ -1,0 +1,4 @@
+<map id="ns3::EnvironmentCreator::CreateEnbs" name="ns3::EnvironmentCreator::CreateEnbs">
+<area shape="rect" id="node1" title="Create and place the eNodeBs for the scenario." alt="" coords="5,5,189,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_environment_creator.html#a4ef9c867a4aeec4d3f7ff68620672b2b" title="Place the eNodeBs randomly on a straight track. It is ensured that every point of the track is within..." alt="" coords="237,5,421,47"/>
+</map>

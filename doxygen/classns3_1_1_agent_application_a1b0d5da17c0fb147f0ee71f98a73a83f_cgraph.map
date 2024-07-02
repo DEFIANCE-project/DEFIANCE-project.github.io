@@ -1,0 +1,4 @@
+<map id="ns3::AgentApplication::SendAction" name="ns3::AgentApplication::SendAction">
+<area shape="rect" id="node1" title="Send an action to the specified ActionApplication via all according ChannelInterfaces." alt="" coords="5,5,169,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html#a8b1d87dfee1e719888f3dae528194bf2" title="Send data to the specified interfaces if the application is currently running." alt="" coords="217,5,356,47"/>
+</map>

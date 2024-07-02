@@ -1,0 +1,8 @@
+<map id="ns3::PowerControlMobComEnv::MobComEnv" name="ns3::PowerControlMobComEnv::MobComEnv">
+<area shape="rect" id="node1" title="Constructor for the MobComEnv class." alt="" coords="5,107,228,149"/>
+<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html#a8c74a20caba678c5255125d490c58941" title="Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e..." alt="" coords="294,5,501,32"/>
+<area shape="rect" id="node3" href="$classns3_1_1_mob_com_env.html#a740e9f16ae3ce3ee5023dc86e26168cb" title="Fill containers for UEs and base stations. The specific topology has to be specified in the child cla..." alt="" coords="276,56,519,83"/>
+<area shape="rect" id="node4" href="$classns3_1_1_mob_com_env.html#ae37f78eac8301a1c59f138752f56b39d" title="Register the necessary callbacks for tracing." alt="" coords="299,107,495,149"/>
+<area shape="rect" id="node5" href="$classns3_1_1_mob_com_env.html#a7a6db1217012a4bbfd5a6a08063e9712" title="Schedule the Notify() events according to m_notificationRate." alt="" coords="297,173,498,214"/>
+<area shape="rect" id="node6" href="$classns3_1_1_mob_com_env.html#a725bebbd02473bed141f40909df5687e" title="Override this method in the child class to set global attributes, or attributes specific to the LteHe..." alt="" coords="288,238,507,279"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="ns3::RlApplication::GetId" name="ns3::RlApplication::GetId">
+<area shape="rect" id="node1" title="Retrieve the RlApplicationId of a specific RL application." alt="" coords="217,39,356,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_agent_application.html#a03ead3fe229723b8885cc632cf03dda0" title=" " alt="" coords="5,5,169,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_agent_application.html#af7fedd842b6920fdd178eaeaa54f22f2" title="Initialize the data structures for storing observations resp. rewards and the observation and action ..." alt="" coords="5,71,169,112"/>
+</map>

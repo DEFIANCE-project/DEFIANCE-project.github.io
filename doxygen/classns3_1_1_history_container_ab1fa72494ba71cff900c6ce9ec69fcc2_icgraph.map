@@ -1,0 +1,4 @@
+<map id="ns3::HistoryContainer::AggregateNewest" name="ns3::HistoryContainer::AggregateNewest">
+<area shape="rect" id="node1" title="Aggregate the latest n data entries of the specified history deque." alt="" coords="204,5,367,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e" title="Called when an observation was received. The observation was already stored in m_obsDataStruct...." alt="" coords="5,5,156,47"/>
+</map>

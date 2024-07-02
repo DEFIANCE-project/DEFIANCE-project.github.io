@@ -1,0 +1,4 @@
+<map id="ns3::PendulumCart::SimulateTimeTic" name="ns3::PendulumCart::SimulateTimeTic">
+<area shape="rect" id="node1" title="Simulates the physics of the pendulum&#45;cart by using the equations of motion of an inverted pendulum...." alt="" coords="5,5,159,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_pendulum_cart.html#a4535ad0a8337487a1f86e5d3119cac25" title="Set the angle of the cart in radians: ensures that the angle stays between &#45;pi and pi." alt="" coords="207,5,360,47"/>
+</map>

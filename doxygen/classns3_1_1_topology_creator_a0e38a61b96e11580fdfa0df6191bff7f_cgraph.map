@@ -1,0 +1,5 @@
+<map id="ns3::TopologyCreator::GetBaseStations" name="ns3::TopologyCreator::GetBaseStations">
+<area shape="rect" id="node1" title="Search for base station of scenario and already created scenarios. Leave empty to get base stations o..." alt="" coords="5,5,164,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_topology_creator.html#a94f4a845fbe22fbd6be7da55d18e7259" title="Create a NodeContainer with the base stations at the specified location." alt="" coords="212,5,371,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_topology_creator.html#aa4fe2c981524f10614365afdd70019e4" title="Get the name of the directory containing config and trace files." alt="" coords="419,5,577,47"/>
+</map>

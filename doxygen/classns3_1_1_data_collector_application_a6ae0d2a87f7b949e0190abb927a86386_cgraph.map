@@ -1,0 +1,4 @@
+<map id="ns3::DataCollectorApplication::Send" name="ns3::DataCollectorApplication::Send">
+<area shape="rect" id="node1" title="Send data to the specified AgentApplication via all according ChannelInterfaces." alt="" coords="5,5,220,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html#a8b1d87dfee1e719888f3dae528194bf2" title="Send data to the specified interfaces if the application is currently running." alt="" coords="268,5,407,47"/>
+</map>

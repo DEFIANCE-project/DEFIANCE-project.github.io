@@ -1,0 +1,4 @@
+<map id="ns3::AgentApplication::AddAgentInterface" name="ns3::AgentApplication::AddAgentInterface">
+<area shape="rect" id="node1" title="Add a ChannelInterface to this AgentApplication over which it can communicate with another AgentAppli..." alt="" coords="5,5,169,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_agent_application.html#ae49d167ad77af5ed5a237446203277c4" title="Called when a message is received from an agent." alt="" coords="217,5,381,47"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="SimpleChannelInterface::Connect" name="SimpleChannelInterface::Connect">
+<area shape="rect" id="node1" title="Establish a connection to the communication partner." alt="" coords="5,71,184,112"/>
+<area shape="rect" id="node2" href="$class_channel_interface.html#aff7efd48eb8a274d00eb5197a4d908d5" title="Get the connection status of the channel." alt="" coords="232,5,469,47"/>
+<area shape="rect" id="node3" href="$class_simple_channel_interface.html#a2fe62cd54171e6fdfd6388ef7310da34" title="Set the communication partner." alt="" coords="251,71,451,112"/>
+<area shape="rect" id="node4" href="$class_channel_interface.html#a7eeb5fa9013d47726dc7084c9e93b743" title="Set the connection status of the channel." alt="" coords="233,136,468,177"/>
+</map>

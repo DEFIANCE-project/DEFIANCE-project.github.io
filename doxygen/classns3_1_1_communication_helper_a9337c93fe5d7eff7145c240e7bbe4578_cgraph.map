@@ -1,0 +1,6 @@
+<map id="ns3::CommunicationHelper::AddCommunication" name="ns3::CommunicationHelper::AddCommunication">
+<area shape="rect" id="node1" title="Connect specified RlApplications." alt="" coords="5,39,204,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_communication_helper.html#ac0aad19a50650b6c1990c9fc69853451" title="Set up a communication relationship between two RlApplications over ChannelInterfaces." alt="" coords="252,5,451,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_communication_helper.html#a2e64af46d27373c65398a484d9adcbbb" title="Get the corresponding RlApplication for this RlApplicationId by looking it up in the right RlApplicat..." alt="" coords="252,71,451,112"/>
+<area shape="rect" id="node4" href="$classns3_1_1_rl_application_container.html#a66caac6e04689d2ac723121314af3774" title="Get the RlApplication stored in this container at a given index." alt="" coords="499,78,732,105"/>
+</map>

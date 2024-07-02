@@ -1,0 +1,8 @@
+<map id="ns3::MobComEnv::GetLteHelper" name="ns3::MobComEnv::GetLteHelper">
+<area shape="rect" id="node1" title=" " alt="" coords="547,110,775,137"/>
+<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html#abf49c5892a588e10f488451c7461826a" title="Attach user equipment to base stations. By default, each UE is attached to the closest base station." alt="" coords="283,37,492,79"/>
+<area shape="rect" id="node5" href="$classns3_1_1_power_control_mob_com_env.html#a724ecdfcec53a060702560417163016e" title="Fill containers for UEs and base stations. The specific topology has to be specified in the child cla..." alt="" coords="276,103,499,144"/>
+<area shape="rect" id="node6" href="$classns3_1_1_power_control_mob_com_env.html#aa0292bb5860a79505a9c1b3c06aa2f0e" title="Override this method in the child class to set global attributes, or attributes specific to the LteHe..." alt="" coords="276,168,499,209"/>
+<area shape="rect" id="node3" href="$classns3_1_1_power_control_mob_com_env.html#a4cf373cd450663c96eb80ce500e66680" title="Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e..." alt="" coords="5,5,228,47"/>
+<area shape="rect" id="node4" href="$classns3_1_1_static_mob_com_env.html#a62cb72588021bdefb7b793fb0304e266" title="Add internet traffic from base stations to user equipments." alt="" coords="31,71,203,112"/>
+</map>

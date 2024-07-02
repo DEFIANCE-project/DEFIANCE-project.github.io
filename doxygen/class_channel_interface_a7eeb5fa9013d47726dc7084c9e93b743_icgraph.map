@@ -1,0 +1,4 @@
+<map id="ChannelInterface::SetConnectionStatus" name="ChannelInterface::SetConnectionStatus">
+<area shape="rect" id="node1" title="Set the connection status of the channel." alt="" coords="232,5,467,47"/>
+<area shape="rect" id="node2" href="$class_simple_channel_interface.html#af0d6ee8793217eb2759e58069721ad43" title="Establish a connection to the communication partner." alt="" coords="5,5,184,47"/>
+</map>

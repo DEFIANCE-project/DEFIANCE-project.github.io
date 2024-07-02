@@ -1,0 +1,7 @@
+<map id="ns3::RlApplication::Send" name="ns3::RlApplication::Send">
+<area shape="rect" id="node1" title="Send data to the specified interfaces if the application is currently running." alt="" coords="268,104,407,145"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html#add1c8bd236bd1b112eb3202305ca3398" title="Send data to the specified interfaces if the application is currently running. This method is not ato..." alt="" coords="43,5,182,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_data_collector_application.html#a5ecbd5968a9bdb21eec1d71124e41165" title="Send data to the specified AgentApplication via the given ChannelInterface." alt="" coords="5,71,220,112"/>
+<area shape="rect" id="node4" href="$classns3_1_1_agent_application.html#a79dc9affc40aca124a890bcde7b4cb60" title="Send an action to the specified ActionApplication via the given ChannelInterface." alt="" coords="31,136,195,177"/>
+<area shape="rect" id="node5" href="$classns3_1_1_agent_application.html#a03df7026b69318c4d58220e64a4d1f88" title="Send a message to the specified AgentApplication via the given ChannelInterface." alt="" coords="31,201,195,243"/>
+</map>

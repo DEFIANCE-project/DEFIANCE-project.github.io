@@ -1,0 +1,5 @@
+<map id="ns3::CommunicationHelper::GetApp" name="ns3::CommunicationHelper::GetApp">
+<area shape="rect" id="node1" title="Get the corresponding RlApplication for this RlApplicationId by looking it up in the right RlApplicat..." alt="" coords="252,39,451,80"/>
+<area shape="rect" id="node2" href="$classns3_1_1_communication_helper.html#a9337c93fe5d7eff7145c240e7bbe4578" title="Connect specified RlApplications." alt="" coords="5,5,204,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_communication_helper.html#a03397b79cb5e547c105568e76f29e56d" title="Delete the communication connection between two RlApplications including the two interfaces." alt="" coords="5,71,204,112"/>
+</map>

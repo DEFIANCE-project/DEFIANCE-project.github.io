@@ -1,0 +1,5 @@
+<map id="ns3::CommunicationHelper::DeleteCommunication" name="ns3::CommunicationHelper::DeleteCommunication">
+<area shape="rect" id="node1" title="Delete the communication connection between two RlApplications including the two interfaces." alt="" coords="5,5,204,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_communication_helper.html#a2e64af46d27373c65398a484d9adcbbb" title="Get the corresponding RlApplication for this RlApplicationId by looking it up in the right RlApplicat..." alt="" coords="252,5,451,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_rl_application_container.html#a66caac6e04689d2ac723121314af3774" title="Get the RlApplication stored in this container at a given index." alt="" coords="499,13,732,39"/>
+</map>

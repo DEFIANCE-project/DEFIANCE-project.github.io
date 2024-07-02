@@ -1,0 +1,4 @@
+<map id="ns3::CommunicationHelper::Connect" name="ns3::CommunicationHelper::Connect">
+<area shape="rect" id="node1" title="Set up a communication relationship between two RlApplications over ChannelInterfaces." alt="" coords="252,5,451,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_communication_helper.html#a9337c93fe5d7eff7145c240e7bbe4578" title="Connect specified RlApplications." alt="" coords="5,5,204,47"/>
+</map>

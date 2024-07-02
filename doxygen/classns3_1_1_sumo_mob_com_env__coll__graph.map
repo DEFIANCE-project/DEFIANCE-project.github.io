@@ -1,0 +1,7 @@
+<map id="ns3::SumoMobComEnv" name="ns3::SumoMobComEnv">
+<area shape="rect" id="node1" title=" " alt="" coords="53,247,225,273"/>
+<area shape="rect" id="node2" href="$classns3_1_1_static_mob_com_env.html" title=" " alt="" coords="53,171,225,197"/>
+<area shape="rect" id="node3" href="$classns3_1_1_mob_com_env.html" title=" " alt="" coords="72,95,207,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node5" href="$classns3_1_1_device_manager.html" title="Contains the information about the nodes and devices of the simulation. Maintains subsets ot these no..." alt="" coords="141,5,295,32"/>
+</map>

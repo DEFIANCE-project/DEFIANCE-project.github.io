@@ -1,0 +1,6 @@
+<map id="ChannelInterface" name="ChannelInterface">
+<area shape="rect" id="node1" title="The ChannelInterface class provides the basic abstraction of one side of a communication channel in t..." alt="" coords="128,80,261,107"/>
+<area shape="rect" id="node3" href="$class_simple_channel_interface.html" title="A very basic implementation of a communication channel that allows the user to specify a delay for pr..." alt="" coords="5,155,184,181"/>
+<area shape="rect" id="node4" href="$class_socket_channel_interface.html" title="The socket channel interface class provides the basic abstraction of one side of a socket communicati..." alt="" coords="208,155,384,181"/>
+<area shape="rect" id="node2" title=" " alt="" coords="163,5,227,32"/>
+</map>

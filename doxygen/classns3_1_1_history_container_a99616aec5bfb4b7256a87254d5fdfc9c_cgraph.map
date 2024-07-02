@@ -1,0 +1,6 @@
+<map id="ns3::HistoryContainer::Push" name="ns3::HistoryContainer::Push">
+<area shape="rect" id="node1" title="Push data into a certain history deque. If no history with the given ID exists, a new history is crea..." alt="" coords="5,71,168,112"/>
+<area shape="rect" id="node2" href="$classns3_1_1_timestamped_data_deque.html#a36d18d19b1ff954ff4aed101f7e59eb1" title="Remove the count oldest data entries from the deque." alt="" coords="216,5,432,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_timestamped_data_deque.html#adf9eca2e62be2bf3a41b3d7a3825f49c" title="Add a new data entry to the deque." alt="" coords="216,71,432,112"/>
+<area shape="rect" id="node4" href="$classns3_1_1_timestamped_data_deque.html#a6324bdad78346d6e69db4246518cc6b3" title=" " alt="" coords="216,136,432,177"/>
+</map>

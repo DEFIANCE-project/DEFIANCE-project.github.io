@@ -1,0 +1,7 @@
+<map id="ns3::TestObservationApp" name="ns3::TestObservationApp">
+<area shape="rect" id="node1" title=" " alt="" coords="21,304,204,331"/>
+<area shape="rect" id="node2" href="$classns3_1_1_observation_application.html" title="This application is installed on a node where observations occur." alt="" coords="10,229,215,256"/>
+<area shape="rect" id="node3" href="$classns3_1_1_data_collector_application.html" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="5,155,220,181"/>
+<area shape="rect" id="node4" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="43,80,182,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="65,5,160,32"/>
+</map>

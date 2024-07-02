@@ -1,0 +1,12 @@
+<map id="ns3::AgentApplication" name="ns3::AgentApplication">
+<area shape="rect" id="node1" title="This application is installed on a node on which the RL agent is to be placed in the network." alt="" coords="1404,56,1568,83"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="995,5,1133,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="655,5,750,32"/>
+<area shape="rect" id="node4" href="$classns3_1_1_history_container.html" title="The main datastructure to store observation/reward data from different observation/reward spaces...." alt="" coords="983,56,1145,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="935,131,1193,187"/>
+<area shape="rect" id="node6" title=" " alt="" coords="613,181,792,222"/>
+<area shape="rect" id="node7" title=" " alt="" coords="166,188,301,215"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,119,44,145"/>
+<area shape="rect" id="node10" title=" " alt="" coords="157,111,309,153"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,189,44,216"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="ns3::TopologyCreator::GetDirectoryName" name="ns3::TopologyCreator::GetDirectoryName">
+<area shape="rect" id="node1" title="Get the name of the directory containing config and trace files." alt="" coords="640,71,799,112"/>
+<area shape="rect" id="node2" href="$classns3_1_1_topology_creator.html#a978d428db7d49b9845b4d32e47a3c1a4" title="Create a NodeContainer containing User Equipment walking around on the streets of the location." alt="" coords="419,5,592,47"/>
+<area shape="rect" id="node3" href="$classns3_1_1_topology_creator.html#a94f4a845fbe22fbd6be7da55d18e7259" title="Create a NodeContainer with the base stations at the specified location." alt="" coords="426,71,585,112"/>
+<area shape="rect" id="node5" href="$classns3_1_1_topology_creator.html#af42339234a0547b58ea77eedcdb66225" title="Set the location of the scenario to a specific area. Creates the necessary config files...." alt="" coords="212,129,371,171"/>
+<area shape="rect" id="node4" href="$classns3_1_1_topology_creator.html#a0e38a61b96e11580fdfa0df6191bff7f" title="Search for base station of scenario and already created scenarios. Leave empty to get base stations o..." alt="" coords="212,64,371,105"/>
+<area shape="rect" id="node6" href="$classns3_1_1_topology_creator.html#a4213e2bf425ba637ee0eaf68f0abb0b1" title="Set the location of the scenario to one of the default scenarios." alt="" coords="5,129,164,171"/>
+</map>

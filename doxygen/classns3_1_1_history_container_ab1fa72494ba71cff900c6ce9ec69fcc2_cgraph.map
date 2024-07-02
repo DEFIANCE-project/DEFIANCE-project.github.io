@@ -1,0 +1,4 @@
+<map id="ns3::HistoryContainer::AggregateNewest" name="ns3::HistoryContainer::AggregateNewest">
+<area shape="rect" id="node1" title="Aggregate the latest n data entries of the specified history deque." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_history_container.html#aa41852451a04848e5f0d111410a8671d" title="Retrieve the latest n collected data entries of one history deque." alt="" coords="216,5,379,47"/>
+</map>
