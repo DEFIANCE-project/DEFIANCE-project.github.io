@@ -1,13 +1,15 @@
 <map id="ns3::DataCollectorApplication" name="ns3::DataCollectorApplication">
-<area shape="rect" id="node1" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="335,157,549,184"/>
+<area shape="rect" id="node1" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="335,259,549,285"/>
 <area shape="rect" id="node4" href="$classns3_1_1_observation_application.html" title="This application is installed on a node where observations occur." alt="" coords="597,56,803,83"/>
-<area shape="rect" id="node9" href="$classns3_1_1_reward_application.html" title="This application is installed on a node where rewards are calculated." alt="" coords="613,233,787,260"/>
-<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="148,157,287,184"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,157,100,184"/>
+<area shape="rect" id="node9" href="$classns3_1_1_reward_application.html" title="This application is installed on a node where rewards are calculated." alt="" coords="613,259,787,285"/>
+<area shape="rect" id="node13" href="$classns3_1_1_test_data_collector_app.html" title="Simple DataCollecorApplication that can be reused for tests." alt="" coords="603,309,797,336"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="148,259,287,285"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,259,100,285"/>
 <area shape="rect" id="node5" title=" " alt="" coords="871,5,1061,32"/>
 <area shape="rect" id="node6" title=" " alt="" coords="903,56,1029,83"/>
-<area shape="rect" id="node7" href="$classns3_1_1_test_observation_app.html" title=" " alt="" coords="875,107,1057,133"/>
+<area shape="rect" id="node7" href="$classns3_1_1_test_observation_app.html" title="Simple ObservationApplication that can be reused for tests." alt="" coords="875,107,1057,133"/>
 <area shape="rect" id="node8" title=" " alt="" coords="851,157,1081,184"/>
 <area shape="rect" id="node10" title=" " alt="" coords="890,208,1042,235"/>
 <area shape="rect" id="node11" title=" " alt="" coords="885,259,1047,285"/>
+<area shape="rect" id="node12" href="$classns3_1_1_test_reward_app.html" title="Simple RewardApplication that can be reused for tests." alt="" coords="889,309,1043,336"/>
 </map>

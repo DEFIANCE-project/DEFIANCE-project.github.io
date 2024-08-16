@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Design Documentation &#8212; DEFIANCE Module 1.0 documentation</title>
+    <title>1. Design Documentation &#8212; DEFIANCE Module 1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -15,7 +15,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example Module Documentation" href="defiance-user.html" />
+    <link rel="next" title="2. User Documentation" href="defiance-user.html" />
     <link rel="prev" title="DEFIANCE Module" href="defiance.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -34,18 +34,18 @@
           <div class="body" role="main">
             
   <section id="design-documentation">
-<h1>Design Documentation<a class="headerlink" href="#design-documentation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Design Documentation<a class="headerlink" href="#design-documentation" title="Permalink to this headline">¶</a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <section id="basic-components">
-<h3>Basic Components<a class="headerlink" href="#basic-components" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.1. </span>Basic Components<a class="headerlink" href="#basic-components" title="Permalink to this headline">¶</a></h3>
 <p>The goal of this module is to support the integration of reinforcement
 learning (RL) components into network scenarios to simulate their
 deployment and the communication between them. Typical RL tasks include
 agents, actions, observations and rewards as their main components. In a
 network, these components are often placed on different nodes. For example,
 collecting observations and training an agent often happen at different
-locations in the network. To associate these RL components with <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>,
+locations in the network. To associate these RL components with <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s,
 the abstraction of user applications is used. The following
 applications inherit from a general <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>:</p>
 <blockquote>
@@ -64,7 +64,7 @@ and thereby changes a part of the network state</p></li>
 <figure class="align-center" id="id10">
 <span id="fig-rlapplication-overview"></span><img alt="_images/rlapplication-overview.png" src="_images/rlapplication-overview.png" />
 <figcaption>
-<p><span class="caption-text">Basic interaction of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-text">Basic interaction of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>A commonly used standard for implementing RL environments is the
@@ -75,7 +75,7 @@ connection with the mainly Python-based RL frameworks needs to be
 established. This module uses <em>ns3-ai</em> <a class="reference internal" href="defiance-references.html#ns3-ai" id="id3"><span>[ns3-ai]</span></a> for the inter-process communication.</p>
 </section>
 <section id="design-criteria">
-<h3>Design Criteria<a class="headerlink" href="#design-criteria" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.2. </span>Design Criteria<a class="headerlink" href="#design-criteria" title="Permalink to this headline">¶</a></h3>
 <p>Possible use cases this module is designed for are the following:</p>
 <blockquote>
 <div><ul class="simple">
@@ -106,31 +106,38 @@ traffic</p></li>
 </ol>
 </div></blockquote>
 </section>
+<section id="class-diagram">
+<h3><span class="section-number">1.1.3. </span>Class diagram<a class="headerlink" href="#class-diagram" title="Permalink to this headline">¶</a></h3>
+<p>The following class diagram includes all classes provided by DEFIANCE. You can also find member variables and class methods that are particularly important.</p>
+<figure class="align-center" id="fig-class-diagram">
+<img alt="_images/defiance-classes.png" src="_images/defiance-classes.png" />
+</figure>
+</section>
 </section>
 <section id="customization">
-<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
 <p>This module provides a framework to simulate different RL components by different
-<code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>. The main tasks that the framework performs for the user in
+<code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. The main tasks that the framework performs for the user in
 order to make it well usable are the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>provide frameworks for prototypical <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>,</p></li>
-<li><p>provide helper functionality to support creation of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> and
-their installation on <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>,</p></li>
-<li><p>enable typical communication between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>, and</p></li>
-<li><p>handle the interaction between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> and the Python-based
+<li><p>provide frameworks for prototypical <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s,</p></li>
+<li><p>provide helper functionality to support creation of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s and
+their installation on <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s,</p></li>
+<li><p>enable typical communication between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s, and</p></li>
+<li><p>handle the interaction between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s and the Python-based
 training/inference processes in compliance with the typical RL workflow.</p></li>
 </ul>
 </div></blockquote>
 <p>In addition to these tasks performed by the framework, some aspects of the
-<code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> strongly depend on the specific RL task and solution
+<code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s strongly depend on the specific RL task and solution
 approach that is to be implemented. Therefore, custom code provided by the user
-of the framework has to be integrated into the <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>. Typically,
-this mainly concerns the following aspects of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>:</p>
+of the framework has to be integrated into the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. Typically,
+this mainly concerns the following aspects of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Data collection: How are observations and rewards collected/calculated exactly?</p></li>
-<li><p>Communication between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>: When and to whom are messages sent?</p></li>
+<li><p>Communication between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s: When and to whom are messages sent?</p></li>
 <li><p>Behavior of agents: At what frequency does the agent step? What triggers a step?</p></li>
 <li><p>Execution of actions: What happens exactly when a specific action occurs?</p></li>
 </ul>
@@ -139,7 +146,7 @@ this mainly concerns the following aspects of <code class="code docutils literal
 which should be registered at a specific <em>ns-3</em> trace source to provide it with the
 necessary data. The according trace source and its signature have to be
 configurable as they depend on the specific scenario. Additionally it should
-be configurable to which <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> the collected data is sent.</p>
+be configurable to which <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s the collected data is sent.</p>
 <p>One option to solve this task are callbacks: The user could create
 functions outside the according <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> with a distinct interface.
 Those could then be registered as callbacks in the according <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>.
@@ -151,7 +158,7 @@ flexible as all function signatures have to be fixed and known already when the
 <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> class is designed. Another drawback
 of this approach is that there is no defined location for the custom
 code of an <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>.</p>
-<p>Therefore, an approach using inheritance was chosen: The <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>
+<p>Therefore, an approach using inheritance was chosen: The <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s
 are designed as abstract classes from which the user has to inherit in
 order to add the scenario-specific code. This has the advantage that all
 code connected to an <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> is collected in a single class.
@@ -160,10 +167,10 @@ and usable defaults can be implemented for methods that may be
 customized.</p>
 </section>
 <section id="channelinterface">
-<h2>ChannelInterface<a class="headerlink" href="#channelinterface" title="Permalink to this headline">¶</a></h2>
-<p>This framework is supposed to allow communication between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> in a
+<h2><span class="section-number">1.3. </span>ChannelInterface<a class="headerlink" href="#channelinterface" title="Permalink to this headline">¶</a></h2>
+<p>This framework is supposed to allow communication between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s in a
 custom scenario. Therefore, it is the task of the framework user to set
-up the scenario and the communication channels between <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>. This implies
+up the scenario and the communication channels between <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s. This implies
 that the user has to provide the framework with an abstraction of a
 pre-configured channel over which data can be sent. Intuitively, this
 would be sockets. Nevertheless, the framework should prevent the user
@@ -171,14 +178,14 @@ from the overhead of creating sockets. That is why the framework uses
 IP addresses and the type of protocol as data the user has to
 provide. Using this data, sockets can be created and connected to each
 other.</p>
-<p><code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> should handle the interfaces of their communication channels
+<p><code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s should handle the interfaces of their communication channels
 transparently, e.g. independent from the protocol type. Additionally,
 direct communication without simulated network traffic should be possible.
 To this end, the <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code> class was introduced as a generalized
-interface used in <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>. It is subclassed by the
+interface used in <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. It is subclassed by the
 <code class="code docutils literal notranslate"><span class="pre">SocketChannelInterface</span></code> class, which is responsible for creating sockets
 when provided with the necessary information (IP addresses and protocol
-type). The <code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterface</span></code> provides the <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> with the
+type). The <code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterface</span></code> provides the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s with the
 same interface while maintaining a direct reference to another
 <code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterface</span></code> to allow communication with a fixed delay (which
 might also be 0).</p>
@@ -189,33 +196,33 @@ might also be 0).</p>
 </figcaption>
 </figure>
 <p>It should be noted that the framework should support multiple connections
-over <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> between a single pair of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> to allow
+over <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s between a single pair of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s to allow
 using different communication channels.</p>
-<p>Simulating communication between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> over simulated network
+<p>Simulating communication between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s over simulated network
 channels includes the chance that a channel is broken and that therefore
 no communication is possible. This has to be handled by the underlying
 protocols or the user of the framework, since the user is responsible for the
 whole setup and configuration of the concrete network scenario.</p>
 </section>
 <section id="design-of-rlapplications">
-<h2>Design of RlApplications<a class="headerlink" href="#design-of-rlapplications" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Design of RlApplications<a class="headerlink" href="#design-of-rlapplications" title="Permalink to this headline">¶</a></h2>
 <section id="rlapplication">
-<h3>RlApplication<a class="headerlink" href="#rlapplication" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.1. </span>RlApplication<a class="headerlink" href="#rlapplication" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> generalizes functionality that is equal among all
 applications provided by this module. This includes IDs to identify specific
-<code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>, functionality to send and to handle <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code>.
+<code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>, functionality to send and to handle <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s.
 In this way a generalized interface for all possible RL applications is
 established which can be used by all classes handling all kinds of RL applications, like
 the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> introduced in <a class="reference internal" href="#sec-helper"><span class="std std-ref">Helper</span></a>.</p>
-<p>In theory, multiple <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> of the same type can be installed on
+<p>In theory, multiple <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s of the same type can be installed on
 the same <code class="code docutils literal notranslate"><span class="pre">Node</span></code>. Nevertheless, this was not tested yet since in most cases
 tasks of the same type (e.g. collecting observations) do not have to be
 separated into different applications when performed on the same <code class="code docutils literal notranslate"><span class="pre">Node</span></code>.</p>
 </section>
 <section id="agentapplication">
-<h3>AgentApplication<a class="headerlink" href="#agentapplication" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.2. </span>AgentApplication<a class="headerlink" href="#agentapplication" title="Permalink to this headline">¶</a></h3>
 <section id="basic-concept">
-<h4>Basic Concept<a class="headerlink" href="#basic-concept" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.1. </span>Basic Concept<a class="headerlink" href="#basic-concept" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> represents an RL agent (which is trained with e.g.
 RLLib) within the network. It has a scenario-specific
 observation and action space. Currently, the framework is tested only with
@@ -223,26 +230,26 @@ fixed observation and action spaces (and not with parametric action
 spaces).</p>
 </section>
 <section id="interaction-with-other-rlapplications">
-<h4>Interaction with other RlApplications<a class="headerlink" href="#interaction-with-other-rlapplications" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.2. </span>Interaction with other RlApplications<a class="headerlink" href="#interaction-with-other-rlapplications" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> may receive observations and rewards from one or
-multiple <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplications</span></code>.
+multiple <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s.
 To support as many use cases as possible, it is also supported to receive
-any data from <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplications</span></code>, which is
+any data from <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s, which is
 not immediatly used as observations or rewards but from which observations
 and rewards are derived by custom calculations. Therefore, the data
-transmitted from <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> to <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> (which is
+transmitted from <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s to <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s (which is
 called observation in the following) does not necessarily fit into the
 observation space of the agent.
 Likewise, an <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> can send actions (or any data derived
-from it’s actions) to one or multiple <code class="code docutils literal notranslate"><span class="pre">ActionApplications</span></code>.</p>
+from it’s actions) to one or multiple <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>s.</p>
 <p>Additionally to the common RL interactions, this framework also supports
-transmitting arbitrary messages between <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code>. This provides
+transmitting arbitrary messages between <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s. This provides
 users of this framework with the chance to implement a protocol for agent
 communication. Furthermore, it is the basis for exchanging model updates
 or policies between agents.</p>
 </section>
 <section id="interaction-with-python-based-learning-process">
-<h4>Interaction with Python-based learning process<a class="headerlink" href="#interaction-with-python-based-learning-process" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.3. </span>Interaction with Python-based learning process<a class="headerlink" href="#interaction-with-python-based-learning-process" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> is intended to interact with the Python-based
 training/inference processes over the <code class="code docutils literal notranslate"><span class="pre">OpenGymMultiAgentInterface</span></code>.
 This is primarily done by the <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> method(s), which call(s)
@@ -254,10 +261,10 @@ the Python side, the <code class="code docutils literal notranslate"><span class
 <code class="code docutils literal notranslate"><span class="pre">m_reward</span></code> object.</p>
 </section>
 <section id="receiving-storing-and-calculating-observations-resp-rewards">
-<h4>Receiving, storing and calculating observations resp. rewards<a class="headerlink" href="#receiving-storing-and-calculating-observations-resp-rewards" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.4. </span>Receiving, storing and calculating observations resp. rewards<a class="headerlink" href="#receiving-storing-and-calculating-observations-resp-rewards" title="Permalink to this headline">¶</a></h4>
 <p>To allow the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> to arbitrarily calculate observations and
-rewards based on the messages received from <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> and
-<code class="code docutils literal notranslate"><span class="pre">RewardApplications</span></code>, these received messages have to be stored in the
+rewards based on the messages received from <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and
+<code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s, these received messages have to be stored in the
 <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>. For this purpose a new data structure, called
 <code class="code docutils literal notranslate"><span class="pre">HistoryContainer</span></code> was designed. Each <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> maintains one
 <code class="code docutils literal notranslate"><span class="pre">HistoryContainer</span></code> for observations (<code class="code docutils literal notranslate"><span class="pre">m_obsDataStruct</span></code>) and one for rewards
@@ -275,19 +282,19 @@ can then specify the behavior of the <code class="code docutils literal notransl
 a message. For example, the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> could wait for 10
 observations before inferring the next action. This is done by
 registering the abstract methods <code class="code docutils literal notranslate"><span class="pre">AgentApplication::OnRecvObs</span></code> and
-<code class="code docutils literal notranslate"><span class="pre">AgentApplication::OnRecvReward</span></code> at the according <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code>.</p>
+<code class="code docutils literal notranslate"><span class="pre">AgentApplication::OnRecvReward</span></code> at the according <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s.</p>
 <p>This framework is intended to make communications between RL components
 more realistic. Nevertheless, it shall still support using global
-knowledge (e.g. knowledge available on other <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>) to calculate rewards
+knowledge (e.g. knowledge available on other <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s) to calculate rewards
 and observations. Particularly, global knowledge can be helpful to
 calculate rewards during offline training. If such global knowledge (i.e.
 data available without delay or communication overhead) shall be used,
 it can just be accessed when rewards and/or observations are calculated
 within the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> or data can be transmitted via
-<code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterfaces</span></code>.</p>
+<code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterface</span></code>s.</p>
 </section>
 <section id="execution-of-actions">
-<h4>Execution of actions<a class="headerlink" href="#execution-of-actions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.5. </span>Execution of actions<a class="headerlink" href="#execution-of-actions" title="Permalink to this headline">¶</a></h4>
 <p>After the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> called
 <code class="code docutils literal notranslate"><span class="pre">OpenGymMultiAgentInterface::NotifyCurrentState</span></code>, it receives an
 action via <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InitiateAction</span></code> from the Python side.
@@ -296,22 +303,22 @@ can be configured in <code class="code docutils literal notranslate"><span class
 Then the <code class="code docutils literal notranslate"><span class="pre">OpenGymMultiAgentInterface</span></code> delays calling
 <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InitiateAction</span></code> by the configured actionDelay. Per default,
 <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InitiateAction</span></code> sends the received action to all connected
-<code class="code docutils literal notranslate"><span class="pre">ActionApplications</span></code>. Because data is transmitted via
-<code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainers</span></code> between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>, the received action is
+<code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>s. Because data is transmitted via
+<code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>s between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s, the received action is
 wrapped into such a container under the key &quot;default&quot;. This method is
 intended to be overwritten if different behaviour is needed. In this way,
 the action can for example be divided into partial actions that are
-sent to different <code class="code docutils literal notranslate"><span class="pre">ActionApplications</span></code>. Alternatively, one could also
-specify in a part of the action to which <code class="code docutils literal notranslate"><span class="pre">ActionApplications</span></code> the action
+sent to different <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>s. Alternatively, one could also
+specify in a part of the action to which <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>s the action
 shall be sent.</p>
 </section>
 <section id="inference-agents-vs-training-agents">
-<h4>Inference agents vs. training agents<a class="headerlink" href="#inference-agents-vs-training-agents" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.4.2.6. </span>Inference agents vs. training agents<a class="headerlink" href="#inference-agents-vs-training-agents" title="Permalink to this headline">¶</a></h4>
 <p>In many RL tasks different agents perform inference and training.
 Therefore, one could provide different <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> classes for these
 two purposes. Nevertheless, a general <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> class, which can
 perform both inference and training is also necessary to support e.g.
-online training. Consequently, the <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> used for inference
+online training. Consequently, the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s used for inference
 and training would only be specializations of this class, which provide
 less functionality. That is why it was decided to leave it to the user
 to use only the functionality which is needed in the current use case.
@@ -321,11 +328,11 @@ inherited <code class="code docutils literal notranslate"><span class="pre">RlAp
 </section>
 </section>
 <section id="datacollectorapplication">
-<h3>DataCollectorApplication<a class="headerlink" href="#datacollectorapplication" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.4.3. </span>DataCollectorApplication<a class="headerlink" href="#datacollectorapplication" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="code docutils literal notranslate"><span class="pre">DataCollectorApplication</span></code> is the base class which is inherited by
 <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> and <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code> since both provide similar
 functionality: They collect scenario-specific data, maintain
-<code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> connected to <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code>, and provide
+<code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s connected to <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s, and provide
 functionality to send over these interfaces. To register the applications
 at scenario-specific trace sources the user has to define a custom
 <code class="code docutils literal notranslate"><span class="pre">ObservationApplication::Observe</span></code> resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplication::Reward</span></code>
@@ -338,43 +345,47 @@ was created. If necessary, the user may also register multiple custom
 the simulation starts, <code class="code docutils literal notranslate"><span class="pre">DataCollectorApplication::RegisterCallbacks</span></code>
 is called in the <code class="code docutils literal notranslate"><span class="pre">DataCollectorApplication::Setup</span></code> method.</p>
 <p>Each <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> resp. <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code> can send observations
-resp. rewards to one or multiple <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> in order not to limit
+resp. rewards to one or multiple <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s in order not to limit
 possible scenarios.</p>
 </section>
 <section id="actionapplication">
-<h3>ActionApplication<a class="headerlink" href="#actionapplication" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> provides functionality to maintain <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code>
-which are connected to <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> and to receive actions (in the
-form of <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainers</span></code>). The abstract method <code class="code docutils literal notranslate"><span class="pre">ActionApplication::ExecuteActions</span></code> is
+<h3><span class="section-number">1.4.4. </span>ActionApplication<a class="headerlink" href="#actionapplication" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> provides functionality to maintain <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s
+which are connected to <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s and to receive actions (in the
+form of <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>s). The abstract method <code class="code docutils literal notranslate"><span class="pre">ActionApplication::ExecuteAction</span></code>s is
 designed to provide a place for the user-specific code that handles the
 different actions. This method is automatically called when data is
-received on the registered <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code>. Therefore, it is connected
+received on the registered <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s. Therefore, it is connected
 to the according callbacks within the <code class="code docutils literal notranslate"><span class="pre">ActionApplication::AddAgentInterface</span></code> method.</p>
 </section>
 <section id="general-decisions">
-<h3>General Decisions<a class="headerlink" href="#general-decisions" title="Permalink to this headline">¶</a></h3>
-<p>All <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> have to store multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> that connect
-them to other <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>. Typically, all <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> connected
+<h3><span class="section-number">1.4.5. </span>General Decisions<a class="headerlink" href="#general-decisions" title="Permalink to this headline">¶</a></h3>
+<p>All <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s have to store multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s that connect
+them to other <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. Typically, all <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s connected
 to a specific remote <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> are used together. Furthermore,
-multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> between a pair of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> have to be
+multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s between a pair of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s have to be
 supported to enable communication over different channels. Therefore,
 InterfaceMaps were introduced, which are essentially two-dimensional maps.
-The outer map is unordered and maps <code class="code docutils literal notranslate"><span class="pre">applicationIds</span></code> to a second ordered map.
+The outer map is unordered and maps <code class="code docutils literal notranslate"><span class="pre">applicationId</span></code>s to a second ordered map.
 The second map maps an ID to the <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>. This ID is unique
-within this map of <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> connected to a specific <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>.
+within this map of <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s connected to a specific <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>.
 To ensure this uniqueness, the entries are stored in ascending order of
 the IDs. In this way, one can simply use the last entry to generate a new
-unique ID. Connecting two <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> over multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code>
+unique ID. Connecting two <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s over multiple <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s
 is an edge case. Therefore, all <code class="code docutils literal notranslate"><span class="pre">RlApplication::Send</span></code> methods are implemented with
 signatures that allow to send to a specific <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>. Nevertheless,
-storing <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> with IDs makes it possible to also provide
+storing <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s with IDs makes it possible to also provide
 methods to sent over a certain <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>.</p>
-<p>In complex scenarios with many <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> and
-<code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code> each <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> should possibly be able to
+<p>We did not consider that during inference the agent might not be able to compute another action.
+In reality, the computation either needs to be queued (“single threaded”) or processed in parallel (“multi threaded”).
+The latter case is different than the current implementation, because the individual inference times increase with increased parallelism.
+For a detailed discussion as how to extend the framework with this feature, see <a class="reference internal" href="#sec-framework-expansion"><span class="std std-ref">Framework expansion options</span></a></p>
+<p>In complex scenarios with many <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and
+<code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s each <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> should possibly be able to
 communicate with each <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>. In this case, it is not
 practicable to configure all communication connections before the
 simulation started. Therefore, it is necessary to support dynamically
-adding and removing <code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> during simulation time, which is
+adding and removing <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s during simulation time, which is
 done by <code class="code docutils literal notranslate"><span class="pre">RlApplication::AddInterface</span></code> and <code class="code docutils literal notranslate"><span class="pre">RlApplication::DeleteInterface</span></code> methods.</p>
 <p>In some cases, one has to configure something within an <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>
 based on the attributes which were set but before the application is
@@ -385,7 +396,7 @@ method was created.</p>
 </section>
 </section>
 <section id="interface-for-multi-agent-rl">
-<h2>Interface for Multi-Agent RL<a class="headerlink" href="#interface-for-multi-agent-rl" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Interface for Multi-Agent RL<a class="headerlink" href="#interface-for-multi-agent-rl" title="Permalink to this headline">¶</a></h2>
 <p>Gymnasium is a commonly used environment interface for
 single-agent training, which is also supported by <em>ns3-ai</em> <a class="reference internal" href="defiance-references.html#ns3-ai" id="id4"><span>[ns3-ai]</span></a>. For multi-agent
 training Ray implemented the MultiAgentEnv API <a class="reference internal" href="defiance-references.html#multiagentenv" id="id5"><span>[MultiAgentEnv]</span></a>. Besides this API, there
@@ -453,99 +464,108 @@ to <code class="code docutils literal notranslate"><span class="pre">AgentApplic
 environment won’t step.</p>
 </section>
 <section id="helper">
-<span id="sec-helper"></span><h2>Helper<a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h2>
+<span id="sec-helper"></span><h2><span class="section-number">1.6. </span>Helper<a class="headerlink" href="#helper" title="Permalink to this headline">¶</a></h2>
 <p>In a typical use case this framework has to be integrated into an existing
 <em>ns-3</em> scenario. In <em>ns-3</em>, the concept of helpers is commonly used to
 simplify the configuration and setup tasks the user has to perform.</p>
 <p>In <em>ns-3.42</em> an <code class="code docutils literal notranslate"><span class="pre">ApplicationHelper</span></code> was introduced, which is used to create
-and install applications of a specified type on <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>. To avoid repeating
+and install applications of a specified type on <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s. To avoid repeating
 casts, which would lead to very cluttered code, an <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code>
-was introduced by this framework which returns <code class="code docutils literal notranslate"><span class="pre">RlApplicationContainers</span></code>
-instead of <code class="code docutils literal notranslate"><span class="pre">ApplicationContainers</span></code>.</p>
+was introduced by this framework which returns <code class="code docutils literal notranslate"><span class="pre">RlApplicationContainer</span></code>s
+instead of <code class="code docutils literal notranslate"><span class="pre">ApplicationContainer</span></code>s.</p>
 <p>The main configuration task of this framework is the setup of all
-communication connections between <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>, e.g. the connection of
-all <code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> to their according <code class="code docutils literal notranslate"><span class="pre">AgentApplications</span></code>. For this
+communication connections between <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s, e.g. the connection of
+all <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s to their according <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>s. For this
 purpose, the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> was created. The framework should allow
-all possible connections between pairs of <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> without making
+all possible connections between pairs of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s without making
 any restricting assumptions. This is done by letting the user configure
 the communication relationships via an adjacency list. Thereby, it is even
 possible to configure multiple different connections, e.g. over different
-channels between two <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>.</p>
-<p>To allow the user to identify <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> e.g. when passing them to
-this adjacency list, <code class="code docutils literal notranslate"><span class="pre">RlApplicationIds</span></code> were introduced. They consist of a
+channels between two <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s.</p>
+<p>To allow the user to identify <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s e.g. when passing them to
+this adjacency list, <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>s were introduced. They consist of a
 part identifying the <code class="code docutils literal notranslate"><span class="pre">applicationType</span></code> (e.g. <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>) and an
-<code class="code docutils literal notranslate"><span class="pre">applicationId</span></code> which is unique among all <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> of this type. In
+<code class="code docutils literal notranslate"><span class="pre">applicationId</span></code> which is unique among all <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s of this type. In
 this way, the <code class="code docutils literal notranslate"><span class="pre">applicationType</span></code> can be identified when necessary and
 whenever the <code class="code docutils literal notranslate"><span class="pre">applicationType</span></code> is clear, only the <code class="code docutils literal notranslate"><span class="pre">applicationId</span></code> is used for
 identification. The <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> is also used for creating these
 unique Ids.
-To do this, it needs to have access to all <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> existing in a
-scenario. One option for this is to create all <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> within the
+To do this, it needs to have access to all <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s existing in a
+scenario. One option for this is to create all <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s within the
 <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code>. This requires the user to provide the
-<code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> with all <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code> and the according:code:<cite>applicationTypes</cite> to
+<code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> with all <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s and the according:code:<cite>applicationType</cite>s to
 install on them. However, this would just move the identification problem
-to the level of the <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>. Additionally, this approach would conform less
+to the level of the <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s. Additionally, this approach would conform less
 with the general idea that the user defines the location of applications
-by installing them on <code class="code docutils literal notranslate"><span class="pre">Nodes</span></code>. That is why, the tasks of creating/installing
-<code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> and configuring them and their communication relationships
+by installing them on <code class="code docutils literal notranslate"><span class="pre">Node</span></code>s. That is why, the tasks of creating/installing
+<code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s and configuring them and their communication relationships
 was split between the <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code> and the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code>.
-In this way, it is required that the user passes all <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> to
-the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code>. Then the <code class="code docutils literal notranslate"><span class="pre">RlApplicationIds</span></code> can be set by the
+In this way, it is required that the user passes all <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s to
+the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code>. Then the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>s can be set by the
 <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> via the <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper::SetIds</span></code> method.</p>
-<p>Besides a pair of <code class="code docutils literal notranslate"><span class="pre">RlApplicationIds</span></code>, the user has to specify in the
+<p>Besides a pair of <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>s, the user has to specify in the
 adjacency list all attributes that are necessary to configure the
-connection between these <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>. This is done via
+connection between these <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. This is done via
 <code class="code docutils literal notranslate"><span class="pre">CommunicationAttributes</span></code> as a compact format for all possible configuration
 data. If no information (i.e. <code class="code docutils literal notranslate"><span class="pre">{}</span></code>) is provided by the user, the framework will
-establish <code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterfaces</span></code>, so that as little configuration is
+establish <code class="code docutils literal notranslate"><span class="pre">SimpleChannelInterface</span></code>s, so that as little configuration is
 required as possible. If <code class="code docutils literal notranslate"><span class="pre">SocketCommunicationAttributes</span></code> are provided, the
 <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> is responsible for creating the according
-<code class="code docutils literal notranslate"><span class="pre">ChannelInterfaces</span></code> and connecting them. The main goal when designing this
+<code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>s and connecting them. The main goal when designing this
 configuration interface was to enable as many configurations as possible,
 while making as few configurations as possible necessary. That is why, e.g.
 a default protocol for <code class="code docutils literal notranslate"><span class="pre">SocketCommunicationAttributes</span></code> and default IP addresses
 for each <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> (that is derived from the list of network interfaces
 of its <code class="code docutils literal notranslate"><span class="pre">Node</span></code>) were implemented.</p>
 <p>The <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper::Configure</span></code> method was introduced to make it possible to simultaneously
-call the <code class="code docutils literal notranslate"><span class="pre">RlApplication::Setup</span></code> method on all <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code> at a time which is
+call the <code class="code docutils literal notranslate"><span class="pre">RlApplication::Setup</span></code> method on all <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s at a time which is
 independent from e.g. the constructors, so that it can be done after
-setting the <code class="code docutils literal notranslate"><span class="pre">RlApplicationIds</span></code> but before setting up the communication
+setting the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>s but before setting up the communication
 relationships. The methods <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper::Configure</span></code> and <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper::SetIds</span></code> could be called
 combinedly in a single method, so that the user does not have to
 call two methods. However, this was not done so far because both methods
 perform very different tasks.</p>
 </section>
-<section id="expansion-options">
-<h2>Expansion options<a class="headerlink" href="#expansion-options" title="Permalink to this headline">¶</a></h2>
+<section id="framework-expansion-options">
+<span id="sec-framework-expansion"></span><h2><span class="section-number">1.7. </span>Framework expansion options<a class="headerlink" href="#framework-expansion-options" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><ul class="simple">
+<div><ul>
 <li><p>Create interface for sharing model updates or policies between agents.
-(already implemented to large extend)</p>
+(already implemented to a large extent)</p>
 <ul>
 <li><p>In some network infrastructures it is necessary to outsource training
-to a remote server, to share learned model updates or to share
+to a remote server, to share learned model updates, or to share
 policies between participants. To simulate resulting constraints and
 research possible opportunities it is required to realistically
 simulate the performance of shared updates and policies as well as
 their size. This feature addresses issues like:</p>
-<ul>
-<li><p>How is performance effected when learning distributedly?</p></li>
+<ul class="simple">
+<li><p>How is performance affected when learning distributedly?</p></li>
 <li><p>What burden does resulting communication pose on a network and can
 it be reduced?</p></li>
 </ul>
 </li>
-<li><p>While the required communication functionality already exists on the
-C++ side, the functionality on the Python side to actually share
-updates or policies is still missing.</p></li>
+<li><p>The required communication functionality is already implemented to a large extent:
+On the <em>ns-3</em> side, in <code class="code docutils literal notranslate"><span class="pre">AgentApplication::OnRecvFromAgent</span></code> logic to handle model weights, experience, and model
+update messages need to be handled by the agent. The message flow is depicted in <a class="reference internal" href="#fig-model-updates"><span class="std std-ref">Interaction of inference agents, trainings server, and the ns3-ai message interface</span></a>.</p>
+<figure class="align-center" id="id14">
+<span id="fig-model-updates"></span><img alt="_images/model-updates.png" src="_images/model-updates.png" />
+<figcaption>
+<p><span class="caption-text">Interaction of inference agents, trainings server, and the ns3-ai message interface</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>This message flow is fully implemented; only the ns3-ai message handling on the Python side alongside the interaction
+with Ray is still missing.</p>
+</li>
 </ul>
 </li>
-<li><p>Support moving agents (and other <code class="code docutils literal notranslate"><span class="pre">RlApplications</span></code>) to another <code class="code docutils literal notranslate"><span class="pre">Node</span></code>. (not
+<li><p>Support moving agents (and other <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s) to another <code class="code docutils literal notranslate"><span class="pre">Node</span></code>. (not
 started)</p>
-<ul>
+<ul class="simple">
 <li><p>In complex scenarios it might be required to change the <code class="code docutils literal notranslate"><span class="pre">Node</span></code> from
 which the agent receives its observations or where it performs its
-actions. Currently this would require installing
-<code class="code docutils literal notranslate"><span class="pre">ObservationApplications</span></code> and <code class="code docutils literal notranslate"><span class="pre">ActionApplications</span></code> on every possible <code class="code docutils literal notranslate"><span class="pre">Node</span></code>
+actions. Currently, this would require installing
+<code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>s on every possible <code class="code docutils literal notranslate"><span class="pre">Node</span></code>
 and then switch between them when sending. Since this is prone to
 bugs at runtime and difficult to track especially for bigger
 scenarios, it would be more handy to move an existing application to
@@ -557,22 +577,22 @@ another <code class="code docutils literal notranslate"><span class="pre">Node</
 </ul>
 </li>
 <li><p>Checkpointing (almost done)</p>
-<ul>
+<ul class="simple">
 <li><p>To simulate inference without training or continue training of
-promising policies, it is required to implement Ray’s checkpointing. We
+promising policies, it is required to implement Ray’s checkpointing. We have
 already implemented inference runs. However, continuing training hasn’t
 been tested yet.</p></li>
 </ul>
 </li>
 <li><p>Multithreading vs. Singlethreading (not started)</p>
-<ul>
-<li><p>What happens if multiple observations arrive at once? In a realistic
-scenario with limited resources the agent might only be capable of
-starting a limited amount of threads for inference. Maybe it is even
-singlethreaded. To provide inference for all observations it would be
+<ul class="simple">
+<li><p>What happens if multiple observations arrive while the agent is already inferring an action? In a realistic
+scenario with limited resources, the agent might only be capable of
+starting a limited amount of threads for inference. Then, increased parallelism increases the inference times for a
+job. Maybe the node is even single-threaded. To provide inference for all observations it would be
 required to buffer some of the observations. This feature would allow
 to simulate thereby introduced latency as well as additional
-limitation in regards to the buffer size. Scenarios could explore
+limitations in regard to the buffer size. Scenarios could explore
 questions like: Which buffer strategies are sensible for overall
 performance if the buffer is full? How beneficial is it to provide
 more resources for the agent in order to allow multithreading? This
@@ -602,37 +622,38 @@ would lead to quantifiable answers to complex optimization problems.</p></li>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Design Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#basic-components">Basic Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#design-criteria">Design Criteria</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Design Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">1.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-components">1.1.1. Basic Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-criteria">1.1.2. Design Criteria</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-diagram">1.1.3. Class diagram</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#customization">Customization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#channelinterface">ChannelInterface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#design-of-rlapplications">Design of RlApplications</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#rlapplication">RlApplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#agentapplication">AgentApplication</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#basic-concept">Basic Concept</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interaction-with-other-rlapplications">Interaction with other RlApplications</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interaction-with-python-based-learning-process">Interaction with Python-based learning process</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#receiving-storing-and-calculating-observations-resp-rewards">Receiving, storing and calculating observations resp. rewards</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#execution-of-actions">Execution of actions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inference-agents-vs-training-agents">Inference agents vs. training agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customization">1.2. Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#channelinterface">1.3. ChannelInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-of-rlapplications">1.4. Design of RlApplications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rlapplication">1.4.1. RlApplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agentapplication">1.4.2. AgentApplication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-concept">1.4.2.1. Basic Concept</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interaction-with-other-rlapplications">1.4.2.2. Interaction with other RlApplications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interaction-with-python-based-learning-process">1.4.2.3. Interaction with Python-based learning process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#receiving-storing-and-calculating-observations-resp-rewards">1.4.2.4. Receiving, storing and calculating observations resp. rewards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execution-of-actions">1.4.2.5. Execution of actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inference-agents-vs-training-agents">1.4.2.6. Inference agents vs. training agents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#datacollectorapplication">DataCollectorApplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#actionapplication">ActionApplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#general-decisions">General Decisions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#datacollectorapplication">1.4.3. DataCollectorApplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actionapplication">1.4.4. ActionApplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-decisions">1.4.5. General Decisions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#interface-for-multi-agent-rl">Interface for Multi-Agent RL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#helper">Helper</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#expansion-options">Expansion options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interface-for-multi-agent-rl">1.5. Interface for Multi-Agent RL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helper">1.6. Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#framework-expansion-options">1.7. Framework expansion options</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="defiance-user.html">Example Module Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defiance-references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-user.html">2. User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-references.html">3. References</a></li>
 </ul>
 
 <div class="relations">
@@ -640,7 +661,7 @@ would lead to quantifiable answers to complex optimization problems.</p></li>
 <ul>
   <li><a href="defiance.html">Documentation overview</a><ul>
       <li>Previous: <a href="defiance.html" title="previous chapter">DEFIANCE Module</a></li>
-      <li>Next: <a href="defiance-user.html" title="next chapter">Example Module Documentation</a></li>
+      <li>Next: <a href="defiance-user.html" title="next chapter"><span class="section-number">2. </span>User Documentation</a></li>
   </ul></li>
 </ul>
 </div>

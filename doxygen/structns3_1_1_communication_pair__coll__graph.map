@@ -1,5 +1,5 @@
 <map id="ns3::CommunicationPair" name="ns3::CommunicationPair">
-<area shape="rect" id="node1" title=" " alt="" coords="129,109,309,136"/>
-<area shape="rect" id="node2" href="$structns3_1_1_communication_attributes.html" title=" " alt="" coords="5,5,225,32"/>
-<area shape="rect" id="node3" href="$structns3_1_1_rl_application_id.html" title=" " alt="" coords="249,5,400,32"/>
+<area shape="rect" id="node1" title="Hold information for constructing a ChannelInterface between two RlApplications. Depending on the att..." alt="" coords="129,109,309,136"/>
+<area shape="rect" id="node2" href="$structns3_1_1_communication_attributes.html" title="Common parameters used for communication between RlApplications over a ChannelInterface." alt="" coords="5,5,225,32"/>
+<area shape="rect" id="node3" href="$structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff..." alt="" coords="249,5,400,32"/>
 </map>

@@ -92,135 +92,200 @@ $(document).ready(function(){initNavTree('base-test_8h_source.html',''); initRes
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef BASE_TEST_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define BASE_TEST_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;agent-application.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;observation-application.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;ns3/ai-module.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;ns3/node-container.h&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;ns3/test.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>ns3</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;Ptr&lt;OpenGymDictContainer&gt; MakeDictContainer(std::string key, Ptr&lt;OpenGymDataContainer&gt; data);</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;action-application.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;agent-application.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;observation-application.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;reward-application.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;ns3/ai-module.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ns3/node-container.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;ns3/test.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;Ptr&lt;OpenGymBoxContainer&lt;T&gt;&gt;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;MakeBoxContainer(uint32_t shape)</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxContainer&lt;T&gt;&gt;(vShape);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">class</span>... Params&gt;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;Ptr&lt;OpenGymBoxContainer&lt;T&gt;&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;MakeBoxContainer(uint32_t shape, Params... params)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">auto</span> obj = MakeBoxContainer&lt;T&gt;(shape);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; data : {params...})</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        obj-&gt;AddValue(data);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> obj;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">extern</span> Callback&lt;void, Ptr&lt;OpenGymDataContainer&gt;&gt; noopCallback;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;Ptr&lt;OpenGymBoxSpace&gt;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;MakeBoxSpace(uint32_t shape, <span class="keywordtype">float</span> low, <span class="keywordtype">float</span> high)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxSpace&gt;(low, high, vShape, TypeNameGet&lt;T&gt;());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;Ptr&lt;OpenGymBoxSpace&gt;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;MakeBoxSpace(uint32_t shape, std::vector&lt;float&gt; low, std::vector&lt;float&gt; high)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxSpace&gt;(low, high, vShape, TypeNameGet&lt;T&gt;());</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">class</span>... Params&gt;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;Ptr&lt;OpenGymDictContainer&gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;MakeDictBoxContainer(uint32_t shape, std::string key, Params... params)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> MakeDictContainer(key, MakeBoxContainer&lt;T&gt;(shape, params...));</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classns3_1_1_rl_app_base_test_case.html">   66</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a> : <span class="keyword">public</span> TestCase</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a>(std::string name);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    ~<a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> ReceiveData(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, Ptr&lt;OpenGymDictContainer&gt; data);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> CreateInterfaces();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> ScenarioSetup();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> DoRun() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Simulate() = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    std::vector&lt;float&gt; m_receivedData;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::vector&lt;Ptr&lt;ChannelInterface&gt;&gt; m_sendingInterfaces;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    std::vector&lt;Ptr&lt;ChannelInterface&gt;&gt; m_receivingInterfaces;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Ptr&lt;Node&gt; m_node;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classns3_1_1_test_observation_app.html">   90</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_observation_application.html">ObservationApplication</a></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a>();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ~<a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> TypeId <a class="code" href="classns3_1_1_test_observation_app.html#af8fa403e3fa0399ede4695128f9bacc2">GetTypeId</a>();</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Observe(<span class="keywordtype">float</span> observation, <span class="keywordtype">int</span> appId, <span class="keywordtype">int</span> interfaceIndex);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_observation_app.html#a0c8e1f66e297af48228b2b8b94bc2f91">ExecuteCallback</a>(<span class="keywordtype">float</span> arg, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_observation_app.html#ab650381fa251aaf60b66a4fd307a4bc2">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    Callback&lt;void, float, int, int&gt; m_callback;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classns3_1_1_test_agent_app.html">  115</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_agent_application.html">AgentApplication</a></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a>(){};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>ns3</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;Ptr&lt;OpenGymDictContainer&gt; MakeDictContainer(std::string key, Ptr&lt;OpenGymDataContainer&gt; data);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Ptr&lt;OpenGymBoxContainer&lt;T&gt;&gt;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;MakeBoxContainer(uint32_t shape)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxContainer&lt;T&gt;&gt;(vShape);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">class</span>... Params&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;Ptr&lt;OpenGymBoxContainer&lt;T&gt;&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;MakeBoxContainer(uint32_t shape, Params... params)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">auto</span> obj = MakeBoxContainer&lt;T&gt;(shape);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; data : {params...})</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        obj-&gt;AddValue(data);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> obj;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">extern</span> Callback&lt;void, Ptr&lt;OpenGymDataContainer&gt;&gt; noopCallback;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;Ptr&lt;OpenGymBoxSpace&gt;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;MakeBoxSpace(uint32_t shape, <span class="keywordtype">float</span> low, <span class="keywordtype">float</span> high)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxSpace&gt;(low, high, vShape, TypeNameGet&lt;T&gt;());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;Ptr&lt;OpenGymBoxSpace&gt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;MakeBoxSpace(uint32_t shape, std::vector&lt;float&gt; low, std::vector&lt;float&gt; high)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    std::vector&lt;uint32_t&gt; vShape = {shape};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> CreateObject&lt;OpenGymBoxSpace&gt;(low, high, vShape, TypeNameGet&lt;T&gt;());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>T, <span class="keyword">class</span>... Params&gt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;Ptr&lt;OpenGymDictContainer&gt;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;MakeDictBoxContainer(uint32_t shape, std::string key, Params... params)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> MakeDictContainer(key, MakeBoxContainer&lt;T&gt;(shape, params...));</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classns3_1_1_rl_app_base_test_case.html">   70</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a> : <span class="keyword">public</span> TestCase</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a>(std::string name);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    ~<a class="code" href="classns3_1_1_rl_app_base_test_case.html">RlAppBaseTestCase</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> ReceiveData(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, Ptr&lt;OpenGymDictContainer&gt; data);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> CreateInterfaces();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> ScenarioSetup();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> DoRun() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Simulate() = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;float&gt; m_receivedData;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::vector&lt;Ptr&lt;ChannelInterface&gt;&gt; m_sendingInterfaces;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::vector&lt;Ptr&lt;ChannelInterface&gt;&gt; m_receivingInterfaces;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Ptr&lt;Node&gt; m_node;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classns3_1_1_test_data_collector_app.html">   95</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_data_collector_app.html">TestDataCollectorApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_data_collector_application.html">DataCollectorApplication</a></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classns3_1_1_test_data_collector_app.html">TestDataCollectorApp</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    ~<a class="code" href="classns3_1_1_test_data_collector_app.html">TestDataCollectorApp</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">static</span> TypeId <a class="code" href="classns3_1_1_test_data_collector_app.html#a13eec3cab200bf34334cd559dde98080">GetTypeId</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> CollectData(<span class="keywordtype">float</span> data, <span class="keywordtype">int</span> appId, <span class="keywordtype">int</span> interfaceIndex);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_data_collector_app.html#af353641ae077bd2a0f9ca36c578e4d8f">ExecuteCallback</a>(<span class="keywordtype">float</span> arg, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_data_collector_app.html#ad7c95adf09329a459721d03e41da5a31">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    Callback&lt;void, float, int, int&gt; m_callback;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;};</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    ~<a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">static</span> TypeId GetTypeId();</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">OnRecvObs</a>(uint remoteAppId) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_agent_app.html#a60385b2d399c08a847fac0e30aa393b0">OnRecvReward</a>(uint remoteAppId) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetObservationSpace() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetActionSpace() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    std::map&lt;uint, double&gt; GetLatest() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    std::map&lt;uint, double&gt; m_latest;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;};</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;} <span class="comment">// namespace ns3</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="classns3_1_1_test_observation_app.html">  125</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_observation_application.html">ObservationApplication</a></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a>();</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    ~<a class="code" href="classns3_1_1_test_observation_app.html">TestObservationApp</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">static</span> TypeId <a class="code" href="classns3_1_1_test_observation_app.html#af8fa403e3fa0399ede4695128f9bacc2">GetTypeId</a>();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Observe(<span class="keywordtype">float</span> observation, <span class="keywordtype">int</span> appId, <span class="keywordtype">int</span> interfaceIndex);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_observation_app.html#a0c8e1f66e297af48228b2b8b94bc2f91">ExecuteCallback</a>(<span class="keywordtype">float</span> arg, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_observation_app.html#ab650381fa251aaf60b66a4fd307a4bc2">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    Callback&lt;void, float, int, int&gt; m_callback;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;};</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classns3_1_1_test_reward_app.html">  155</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_reward_app.html">TestRewardApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_reward_application.html">RewardApplication</a></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;{</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="classns3_1_1_test_reward_app.html">TestRewardApp</a>();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    ~<a class="code" href="classns3_1_1_test_reward_app.html">TestRewardApp</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">static</span> TypeId <a class="code" href="classns3_1_1_test_reward_app.html#a4770b2b66492816c22f5ff0af3794511">GetTypeId</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Reward(<span class="keywordtype">float</span> reward, <span class="keywordtype">int</span> appId, <span class="keywordtype">int</span> interfaceIndex);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_reward_app.html#a2c999997019fe9356aa3fbf5bf316762">ExecuteCallback</a>(<span class="keywordtype">float</span> arg, <span class="keywordtype">int</span> arg2, <span class="keywordtype">int</span> arg3);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_reward_app.html#a4c847239de5210e6b16d2e2a9c76466a">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    Callback&lt;void, float, int, int&gt; m_callback;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;};</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classns3_1_1_test_agent_app.html">  185</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_agent_application.html">AgentApplication</a></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a>(){};</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    ~<a class="code" href="classns3_1_1_test_agent_app.html">TestAgentApp</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keyword">static</span> TypeId GetTypeId();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">OnRecvObs</a>(uint remoteAppId) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_agent_app.html#a60385b2d399c08a847fac0e30aa393b0">OnRecvReward</a>(uint remoteAppId) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_agent_app.html#a3d493c9fc22fbca5672c7d3f0bec89d5">OnRecvFromAgent</a>(uint remoteAppId, Ptr&lt;OpenGymDictContainer&gt; payload) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetObservationSpace() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetActionSpace() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; GetObservation() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; GetReward() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; GetMessage() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; m_observation;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; m_reward;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; m_agentMessages;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;};</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="classns3_1_1_test_action_app.html">  215</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_test_action_app.html">TestActionApp</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_action_application.html">ActionApplication</a></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="classns3_1_1_test_action_app.html">TestActionApp</a>();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classns3_1_1_test_action_app.html">TestActionApp</a>();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">static</span> TypeId <a class="code" href="classns3_1_1_test_action_app.html#a001fcc8769897a0905f5f8a0d2c2e3c2">GetTypeId</a>();</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_test_action_app.html#ae4309b188da8b85cc6c3e7bfc7910757">ExecuteAction</a>(uint remoteAppId, Ptr&lt;OpenGymDictContainer&gt; action) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; GetAction() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    std::map&lt;uint, std::vector&lt;float&gt;&gt; m_action;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;};</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;} <span class="comment">// namespace ns3</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassns3_1_1_action_application_html"><div class="ttname"><a href="classns3_1_1_action_application.html">ns3::ActionApplication</a></div><div class="ttdoc">This application is installed on a node where actions are applied.</div><div class="ttdef"><b>Definition:</b> <a href="action-application_8h_source.html#l00014">action-application.h:15</a></div></div>
 <div class="ttc" id="aclassns3_1_1_agent_application_html"><div class="ttname"><a href="classns3_1_1_agent_application.html">ns3::AgentApplication</a></div><div class="ttdoc">This application is installed on a node on which the RL agent is to be placed in the network.</div><div class="ttdef"><b>Definition:</b> <a href="agent-application_8h_source.html#l00024">agent-application.h:25</a></div></div>
+<div class="ttc" id="aclassns3_1_1_data_collector_application_html"><div class="ttname"><a href="classns3_1_1_data_collector_application.html">ns3::DataCollectorApplication</a></div><div class="ttdoc">This application is installed on a node where something is observed, possibly processed and sent to a...</div><div class="ttdef"><b>Definition:</b> <a href="data-collector-application_8h_source.html#l00024">data-collector-application.h:25</a></div></div>
 <div class="ttc" id="aclassns3_1_1_observation_application_html"><div class="ttname"><a href="classns3_1_1_observation_application.html">ns3::ObservationApplication</a></div><div class="ttdoc">This application is installed on a node where observations occur.</div><div class="ttdef"><b>Definition:</b> <a href="observation-application_8h_source.html#l00024">observation-application.h:25</a></div></div>
-<div class="ttc" id="aclassns3_1_1_rl_app_base_test_case_html"><div class="ttname"><a href="classns3_1_1_rl_app_base_test_case.html">ns3::RlAppBaseTestCase</a></div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00066">base-test.h:67</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_agent_app_html"><div class="ttname"><a href="classns3_1_1_test_agent_app.html">ns3::TestAgentApp</a></div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00115">base-test.h:116</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_agent_app_html_a60385b2d399c08a847fac0e30aa393b0"><div class="ttname"><a href="classns3_1_1_test_agent_app.html#a60385b2d399c08a847fac0e30aa393b0">ns3::TestAgentApp::OnRecvReward</a></div><div class="ttdeci">void OnRecvReward(uint remoteAppId) override</div><div class="ttdoc">Called when a reward was received. The reward was already stored in m_rewardDataStruct.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00150">base-test.cc:150</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_agent_app_html_af83370782f33936c4ca9723b0556921e"><div class="ttname"><a href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">ns3::TestAgentApp::OnRecvObs</a></div><div class="ttdeci">void OnRecvObs(uint remoteAppId) override</div><div class="ttdoc">Called when an observation was received. The observation was already stored in m_obsDataStruct....</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00144">base-test.cc:144</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_observation_app_html"><div class="ttname"><a href="classns3_1_1_test_observation_app.html">ns3::TestObservationApp</a></div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00090">base-test.h:91</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_observation_app_html_a0c8e1f66e297af48228b2b8b94bc2f91"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#a0c8e1f66e297af48228b2b8b94bc2f91">ns3::TestObservationApp::ExecuteCallback</a></div><div class="ttdeci">void ExecuteCallback(float arg, int arg2, int arg3)</div><div class="ttdoc">Executes the callback registered in RegisterCallbacks(). This allows to simulate the behaviour of a r...</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00097">base-test.cc:97</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_observation_app_html_ab650381fa251aaf60b66a4fd307a4bc2"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#ab650381fa251aaf60b66a4fd307a4bc2">ns3::TestObservationApp::RegisterCallbacks</a></div><div class="ttdeci">void RegisterCallbacks() override</div><div class="ttdoc">Overwrite this method to register custom methods as callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00120">base-test.cc:120</a></div></div>
-<div class="ttc" id="aclassns3_1_1_test_observation_app_html_af8fa403e3fa0399ede4695128f9bacc2"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#af8fa403e3fa0399ede4695128f9bacc2">ns3::TestObservationApp::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdoc">Get the type ID.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00079">base-test.cc:79</a></div></div>
+<div class="ttc" id="aclassns3_1_1_reward_application_html"><div class="ttname"><a href="classns3_1_1_reward_application.html">ns3::RewardApplication</a></div><div class="ttdoc">This application is installed on a node where rewards are calculated.</div><div class="ttdef"><b>Definition:</b> <a href="reward-application_8h_source.html#l00023">reward-application.h:24</a></div></div>
+<div class="ttc" id="aclassns3_1_1_rl_app_base_test_case_html"><div class="ttname"><a href="classns3_1_1_rl_app_base_test_case.html">ns3::RlAppBaseTestCase</a></div><div class="ttdoc">Base test case class that unifies setup functionality for different tests. This is not a full test ca...</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00070">base-test.h:71</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_action_app_html"><div class="ttname"><a href="classns3_1_1_test_action_app.html">ns3::TestActionApp</a></div><div class="ttdoc">Simple ActionApplication that can be reused for tests.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00215">base-test.h:216</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_action_app_html_a001fcc8769897a0905f5f8a0d2c2e3c2"><div class="ttname"><a href="classns3_1_1_test_action_app.html#a001fcc8769897a0905f5f8a0d2c2e3c2">ns3::TestActionApp::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdoc">Get the type ID.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00297">base-test.cc:297</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_action_app_html_ae4309b188da8b85cc6c3e7bfc7910757"><div class="ttname"><a href="classns3_1_1_test_action_app.html#ae4309b188da8b85cc6c3e7bfc7910757">ns3::TestActionApp::ExecuteAction</a></div><div class="ttdeci">void ExecuteAction(uint remoteAppId, Ptr&lt; OpenGymDictContainer &gt; action) override</div><div class="ttdoc">Executes whatever has to be done if an action is received from an AgentApplication.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00307">base-test.cc:307</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_agent_app_html"><div class="ttname"><a href="classns3_1_1_test_agent_app.html">ns3::TestAgentApp</a></div><div class="ttdoc">Simple AgentApplication that can be reused for tests.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00185">base-test.h:186</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_agent_app_html_a3d493c9fc22fbca5672c7d3f0bec89d5"><div class="ttname"><a href="classns3_1_1_test_agent_app.html#a3d493c9fc22fbca5672c7d3f0bec89d5">ns3::TestAgentApp::OnRecvFromAgent</a></div><div class="ttdeci">void OnRecvFromAgent(uint remoteAppId, Ptr&lt; OpenGymDictContainer &gt; payload) override</div><div class="ttdoc">Called when a message is received from an agent.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00268">base-test.cc:268</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_agent_app_html_a60385b2d399c08a847fac0e30aa393b0"><div class="ttname"><a href="classns3_1_1_test_agent_app.html#a60385b2d399c08a847fac0e30aa393b0">ns3::TestAgentApp::OnRecvReward</a></div><div class="ttdeci">void OnRecvReward(uint remoteAppId) override</div><div class="ttdoc">Called when a reward was received. The reward was already stored in m_rewardDataStruct.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00261">base-test.cc:261</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_agent_app_html_af83370782f33936c4ca9723b0556921e"><div class="ttname"><a href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">ns3::TestAgentApp::OnRecvObs</a></div><div class="ttdeci">void OnRecvObs(uint remoteAppId) override</div><div class="ttdoc">Called when an observation was received. The observation was already stored in m_obsDataStruct....</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00254">base-test.cc:254</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_data_collector_app_html"><div class="ttname"><a href="classns3_1_1_test_data_collector_app.html">ns3::TestDataCollectorApp</a></div><div class="ttdoc">Simple DataCollecorApplication that can be reused for tests.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00095">base-test.h:96</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_data_collector_app_html_a13eec3cab200bf34334cd559dde98080"><div class="ttname"><a href="classns3_1_1_test_data_collector_app.html#a13eec3cab200bf34334cd559dde98080">ns3::TestDataCollectorApp::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdoc">Get the type ID.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00079">base-test.cc:79</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_data_collector_app_html_ad7c95adf09329a459721d03e41da5a31"><div class="ttname"><a href="classns3_1_1_test_data_collector_app.html#ad7c95adf09329a459721d03e41da5a31">ns3::TestDataCollectorApp::RegisterCallbacks</a></div><div class="ttdeci">void RegisterCallbacks() override</div><div class="ttdoc">Overwrite this method to register custom methods as callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00120">base-test.cc:120</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_data_collector_app_html_af353641ae077bd2a0f9ca36c578e4d8f"><div class="ttname"><a href="classns3_1_1_test_data_collector_app.html#af353641ae077bd2a0f9ca36c578e4d8f">ns3::TestDataCollectorApp::ExecuteCallback</a></div><div class="ttdeci">void ExecuteCallback(float arg, int arg2, int arg3)</div><div class="ttdoc">Executes the callback registered in RegisterCallbacks(). This allows to simulate the behaviour of a r...</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00097">base-test.cc:97</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_observation_app_html"><div class="ttname"><a href="classns3_1_1_test_observation_app.html">ns3::TestObservationApp</a></div><div class="ttdoc">Simple ObservationApplication that can be reused for tests.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00125">base-test.h:126</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_observation_app_html_a0c8e1f66e297af48228b2b8b94bc2f91"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#a0c8e1f66e297af48228b2b8b94bc2f91">ns3::TestObservationApp::ExecuteCallback</a></div><div class="ttdeci">void ExecuteCallback(float arg, int arg2, int arg3)</div><div class="ttdoc">Executes the callback registered in RegisterCallbacks(). This allows to simulate the behaviour of a r...</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00146">base-test.cc:146</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_observation_app_html_ab650381fa251aaf60b66a4fd307a4bc2"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#ab650381fa251aaf60b66a4fd307a4bc2">ns3::TestObservationApp::RegisterCallbacks</a></div><div class="ttdeci">void RegisterCallbacks() override</div><div class="ttdoc">Overwrite this method to register custom methods as callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00169">base-test.cc:169</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_observation_app_html_af8fa403e3fa0399ede4695128f9bacc2"><div class="ttname"><a href="classns3_1_1_test_observation_app.html#af8fa403e3fa0399ede4695128f9bacc2">ns3::TestObservationApp::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdoc">Get the type ID.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00128">base-test.cc:128</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_reward_app_html"><div class="ttname"><a href="classns3_1_1_test_reward_app.html">ns3::TestRewardApp</a></div><div class="ttdoc">Simple RewardApplication that can be reused for tests.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8h_source.html#l00155">base-test.h:156</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_reward_app_html_a2c999997019fe9356aa3fbf5bf316762"><div class="ttname"><a href="classns3_1_1_test_reward_app.html#a2c999997019fe9356aa3fbf5bf316762">ns3::TestRewardApp::ExecuteCallback</a></div><div class="ttdeci">void ExecuteCallback(float arg, int arg2, int arg3)</div><div class="ttdoc">Executes the callback registered in RegisterCallbacks(). This allows to simulate the behaviour of a r...</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00195">base-test.cc:195</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_reward_app_html_a4770b2b66492816c22f5ff0af3794511"><div class="ttname"><a href="classns3_1_1_test_reward_app.html#a4770b2b66492816c22f5ff0af3794511">ns3::TestRewardApp::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdoc">Get the type ID.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00177">base-test.cc:177</a></div></div>
+<div class="ttc" id="aclassns3_1_1_test_reward_app_html_a4c847239de5210e6b16d2e2a9c76466a"><div class="ttname"><a href="classns3_1_1_test_reward_app.html#a4c847239de5210e6b16d2e2a9c76466a">ns3::TestRewardApp::RegisterCallbacks</a></div><div class="ttdeci">void RegisterCallbacks() override</div><div class="ttdoc">Overwrite this method to register custom methods as callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="base-test_8cc_source.html#l00218">base-test.cc:218</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3f14f6767c31cb4a1d22c13c18cc6fc3.html">model</a></li><li class="navelem"><b>base-test.h</b></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

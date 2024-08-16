@@ -1,0 +1,6 @@
+<map id="ns3::TestActionApp" name="ns3::TestActionApp">
+<area shape="rect" id="node1" title="Simple ActionApplication that can be reused for tests." alt="" coords="16,229,161,256"/>
+<area shape="rect" id="node2" href="$classns3_1_1_action_application.html" title="This application is installed on a node where actions are applied." alt="" coords="5,155,172,181"/>
+<area shape="rect" id="node3" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="19,80,158,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="41,5,136,32"/>
+</map>

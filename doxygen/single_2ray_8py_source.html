@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('single_2ray_8py_source.html',''); init
 <div class="title">single/ray.py</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html">    1</a></span>&#160;<span class="stringliteral">&quot;&quot;&quot;Agent leveraging ray to train a single agent for a certain ns3 environment.&quot;&quot;&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html">    1</a></span>&#160;<span class="stringliteral">&quot;&quot;&quot;!Agent leveraging ray to train a single agent for a certain ns3 environment.&quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> logging</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">from</span> typing <span class="keyword">import</span> Any</div>
@@ -110,70 +110,74 @@ $(document).ready(function(){initNavTree('single_2ray_8py_source.html',''); init
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks.html">SingleDefianceCallbacks</a>(<a class="code" href="classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks.html">DefianceCallbacks</a>):</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="preprocessor">@override</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">def </span>on_episode_step(self, *, episode: Episode, **kwargs: Any) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        info = episode.last_info_for() <span class="keywordflow">or</span> {}</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">for</span> k, raw <span class="keywordflow">in</span> info.items():</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                v = float(raw)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">except</span> ValueError:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                logger.exception(<span class="stringliteral">&quot;Could not log %s: %s&quot;</span>, k, raw)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">continue</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            episode.user_data[k].append(v)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            episode.hist_data[k].append(v)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">def </span>start_training(</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    env_name: str,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    max_episode_steps: int,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    iterations: int,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    training_params: dict[str, Any],</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    load_checkpoint_path: str | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    **ns3_settings: str,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;) -&gt; <span class="keywordtype">None</span>:</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    logger.info(<span class="stringliteral">&quot;Loading checkpoints is not supported for single agent: %s&quot;</span>, load_checkpoint_path)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    env = TimeLimit(</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        gym.make(<span class="stringliteral">&quot;ns3ai_gym_env/Ns3-v0&quot;</span>, targetName=env_name, ns3Path=<span class="stringliteral">&quot;.&quot;</span>, ns3Settings=ns3_settings),</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        max_episode_steps=max_episode_steps,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    )</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    register_env(<span class="stringliteral">&quot;defiance&quot;</span>, <span class="keyword">lambda</span> _: env)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">try</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        ray.init()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        training_params = {<span class="stringliteral">&quot;lr&quot;</span>: 5e-5, <span class="stringliteral">&quot;clip_param&quot;</span>: 0.3, <span class="stringliteral">&quot;train_batch_size&quot;</span>: 128} | training_params</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        config = PPOConfig().training(**training_params)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        config = config.resources(num_gpus=0).rollouts(num_rollout_workers=1, num_envs_per_worker=1)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        config.framework_str = <span class="stringliteral">&quot;tf&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        config = config.environment(env=<span class="stringliteral">&quot;defiance&quot;</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        config = config.callbacks(SingleDefianceCallbacks)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        logger.info(<span class="stringliteral">&quot;Training...&quot;</span>)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        Tuner(</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="stringliteral">&quot;PPO&quot;</span>,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            run_config=RunConfig(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                stop={<span class="stringliteral">&quot;training_iteration&quot;</span>: iterations},</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                checkpoint_config=CheckpointConfig(checkpoint_at_end=<span class="keyword">True</span>),</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            ),</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            param_space=config.to_dict(),</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        ).fit()</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        ray.shutdown()</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">except</span> Exception:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        logger.exception(<span class="stringliteral">&quot;Exception occurred!&quot;</span>)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">finally</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        env.close()</div>
-<div class="ttc" id="aclassdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks_html"><div class="ttname"><a href="classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks.html">defiance.model.agents.ray.DefianceCallbacks</a></div><div class="ttdef"><b>Definition:</b> <a href="ray_8py_source.html#l00027">ray.py:27</a></div></div>
-<div class="ttc" id="aclassdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks_html"><div class="ttname"><a href="classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks.html">defiance.model.agents.single.ray.SingleDefianceCallbacks</a></div><div class="ttdef"><b>Definition:</b> <a href="single_2ray_8py_source.html#l00021">single/ray.py:21</a></div></div>
-<div class="ttc" id="anamespacedefiance_1_1model_1_1agents_1_1ray_html"><div class="ttname"><a href="namespacedefiance_1_1model_1_1agents_1_1ray.html">defiance.model.agents.ray</a></div><div class="ttdef"><b>Definition:</b> <a href="ray_8py_source.html#l00001">ray.py:1</a></div></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!Ray callbacks for ns3-ai integration into tensorflow&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="preprocessor">@override</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">def </span>on_episode_step(self, *, episode: Episode, **kwargs: Any) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        info = episode.last_info_for() <span class="keywordflow">or</span> {}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">for</span> k, raw <span class="keywordflow">in</span> info.items():</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                v = float(raw)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">except</span> ValueError:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                logger.exception(<span class="stringliteral">&quot;Could not log %s: %s&quot;</span>, k, raw)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keywordflow">continue</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            episode.user_data[k].append(v)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            episode.hist_data[k].append(v)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html#a259ffbcfec65993fa6e053e1fda3e3b4">   37</a></span>&#160;<span class="keyword">def </span><a class="code" href="namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html#a259ffbcfec65993fa6e053e1fda3e3b4">start_training</a>(</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    env_name: str,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    max_episode_steps: int,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    iterations: int,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    training_params: dict[str, Any],</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    load_checkpoint_path: str | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    **ns3_settings: str,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!Start a ray training session with the given ns3-ai environment.&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    logger.info(<span class="stringliteral">&quot;Loading checkpoints is not supported for single agent: %s&quot;</span>, load_checkpoint_path)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    env = TimeLimit(</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        gym.make(<span class="stringliteral">&quot;ns3ai_gym_env/Ns3-v0&quot;</span>, targetName=env_name, ns3Path=<span class="stringliteral">&quot;.&quot;</span>, ns3Settings=ns3_settings),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        max_episode_steps=max_episode_steps,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    )</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    register_env(<span class="stringliteral">&quot;defiance&quot;</span>, <span class="keyword">lambda</span> _: env)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        ray.init()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        training_params = {<span class="stringliteral">&quot;lr&quot;</span>: 5e-5, <span class="stringliteral">&quot;clip_param&quot;</span>: 0.3, <span class="stringliteral">&quot;train_batch_size&quot;</span>: 128} | training_params</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        config = PPOConfig().training(**training_params)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        config = config.resources(num_gpus=0).rollouts(num_rollout_workers=1, num_envs_per_worker=1)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        config.framework_str = <span class="stringliteral">&quot;tf&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        config = config.environment(env=<span class="stringliteral">&quot;defiance&quot;</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        config = config.callbacks(SingleDefianceCallbacks)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        logger.info(<span class="stringliteral">&quot;Training...&quot;</span>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        Tuner(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="stringliteral">&quot;PPO&quot;</span>,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            run_config=RunConfig(</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                stop={<span class="stringliteral">&quot;training_iteration&quot;</span>: iterations},</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                checkpoint_config=CheckpointConfig(checkpoint_at_end=<span class="keyword">True</span>),</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            ),</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            param_space=config.to_dict(),</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        ).fit()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        ray.shutdown()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">except</span> Exception:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        logger.exception(<span class="stringliteral">&quot;Exception occurred!&quot;</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">finally</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        env.close()</div>
+<div class="ttc" id="aclassdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks_html"><div class="ttname"><a href="classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks.html">defiance.model.agents.ray.DefianceCallbacks</a></div><div class="ttdoc">Ray callbacks for multi-agent ns3-ai integration into tensorflow.</div><div class="ttdef"><b>Definition:</b> <a href="ray_8py_source.html#l00027">ray.py:27</a></div></div>
+<div class="ttc" id="aclassdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks_html"><div class="ttname"><a href="classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks.html">defiance.model.agents.single.ray.SingleDefianceCallbacks</a></div><div class="ttdoc">Ray callbacks for ns3-ai integration into tensorflow.</div><div class="ttdef"><b>Definition:</b> <a href="single_2ray_8py_source.html#l00021">single/ray.py:21</a></div></div>
+<div class="ttc" id="anamespacedefiance_1_1model_1_1agents_1_1ray_html"><div class="ttname"><a href="namespacedefiance_1_1model_1_1agents_1_1ray.html">defiance.model.agents.ray</a></div><div class="ttdoc">Agent leveraging ray to train an agent for a certain ns3 environment.</div><div class="ttdef"><b>Definition:</b> <a href="ray_8py_source.html#l00001">ray.py:1</a></div></div>
+<div class="ttc" id="anamespacedefiance_1_1model_1_1agents_1_1single_1_1ray_html_a259ffbcfec65993fa6e053e1fda3e3b4"><div class="ttname"><a href="namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html#a259ffbcfec65993fa6e053e1fda3e3b4">defiance.model.agents.single.ray.start_training</a></div><div class="ttdeci">None start_training(str env_name, int max_episode_steps, int iterations, dict[str, Any] training_params, str|None load_checkpoint_path=None, **str ns3_settings)</div><div class="ttdoc">Start a ray training session with the given ns3-ai environment.</div><div class="ttdef"><b>Definition:</b> <a href="single_2ray_8py_source.html#l00037">single/ray.py:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_3f14f6767c31cb4a1d22c13c18cc6fc3.html">model</a></li><li class="navelem"><a class="el" href="dir_49cc815403da3e901755c17c03434011.html">agents</a></li><li class="navelem"><a class="el" href="dir_11f865f40ec7f5f9b866b89a75a4981c.html">single</a></li><li class="navelem"><b>ray.py</b></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

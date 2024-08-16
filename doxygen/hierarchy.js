@@ -3,7 +3,9 @@ var hierarchy =
     [ "ns3::AggregatedInfo", "classns3_1_1_aggregated_info.html", null ],
     [ "Application", null, [
       [ "ns3::RlApplication", "classns3_1_1_rl_application.html", [
-        [ "ns3::ActionApplication", "classns3_1_1_action_application.html", null ],
+        [ "ns3::ActionApplication", "classns3_1_1_action_application.html", [
+          [ "ns3::TestActionApp", "classns3_1_1_test_action_app.html", null ]
+        ] ],
         [ "ns3::AgentApplication", "classns3_1_1_agent_application.html", [
           [ "ns3::TestAgentApp", "classns3_1_1_test_agent_app.html", null ]
         ] ],
@@ -11,7 +13,10 @@ var hierarchy =
           [ "ns3::ObservationApplication", "classns3_1_1_observation_application.html", [
             [ "ns3::TestObservationApp", "classns3_1_1_test_observation_app.html", null ]
           ] ],
-          [ "ns3::RewardApplication", "classns3_1_1_reward_application.html", null ]
+          [ "ns3::RewardApplication", "classns3_1_1_reward_application.html", [
+            [ "ns3::TestRewardApp", "classns3_1_1_test_reward_app.html", null ]
+          ] ],
+          [ "ns3::TestDataCollectorApp", "classns3_1_1_test_data_collector_app.html", null ]
         ] ]
       ] ]
     ] ],

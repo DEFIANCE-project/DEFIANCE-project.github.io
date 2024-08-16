@@ -3,8 +3,8 @@ var searchData=
   ['agents_29',['agents',['../namespacedefiance_1_1model_1_1agents.html',1,'defiance::model']]],
   ['datacollectorapplication_30',['DataCollectorApplication',['../classns3_1_1_data_collector_application.html',1,'ns3']]],
   ['debug_31',['debug',['../namespacedefiance_1_1model_1_1agents_1_1debug.html',1,'defiance.model.agents.debug'],['../namespacedefiance_1_1model_1_1agents_1_1single_1_1debug.html',1,'defiance.model.agents.single.debug']]],
-  ['deepcomp_20with_20ns3_2dmmwave_20and_20ns3_2dai_32',['DeepCoMP with ns3-mmWave and ns3-ai',['../index.html',1,'']]],
-  ['defiance_33',['defiance',['../group__defiance.html',1,'']]],
+  ['defiance_32',['defiance',['../group__defiance.html',1,'']]],
+  ['defiance_20project_3a_20how_20to_20simulate_20marl_20deployments_20in_20realistic_20network_20scenarios_33',['DEFIANCE project: How to Simulate MARL Deployments in Realistic Network Scenarios',['../index.html',1,'']]],
   ['defiancecallbacks_34',['DefianceCallbacks',['../classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks.html',1,'defiance::model::agents::ray']]],
   ['delay_35',['delay',['../structns3_1_1_communication_attributes.html#a0ebec4b3fff6f3c9775e340e7d6baace',1,'ns3::CommunicationAttributes']]],
   ['deleteactioninterface_36',['DeleteActionInterface',['../classns3_1_1_agent_application.html#add46ecd863d7075695e7b4d56d11d805',1,'ns3::AgentApplication']]],
@@ -19,5 +19,6 @@ var searchData=
   ['disconnect_45',['Disconnect',['../class_channel_interface.html#a2b8ce930a7a195840996f164b8c1f450',1,'ChannelInterface::Disconnect()'],['../class_simple_channel_interface.html#a7a049edb3abe3b12d3060f62244371c3',1,'SimpleChannelInterface::Disconnect()'],['../class_socket_channel_interface.html#ab2610edfe677b69963383462569eee12',1,'SocketChannelInterface::Disconnect()']]],
   ['doinstall_46',['DoInstall',['../classns3_1_1_rl_application_helper.html#a131e526fce4800f8ca1f0ffb61546407',1,'ns3::RlApplicationHelper']]],
   ['ray_47',['ray',['../namespacedefiance_1_1model_1_1agents_1_1ray.html',1,'defiance.model.agents.ray'],['../namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html',1,'defiance.model.agents.single.ray']]],
-  ['test_5fmarl_5finterface_48',['test_marl_interface',['../namespacedefiance_1_1test_1_1test__marl__interface.html',1,'defiance::test']]]
+  ['single_48',['single',['../namespacedefiance_1_1model_1_1agents_1_1single.html',1,'defiance::model::agents']]],
+  ['test_5fmarl_5finterface_49',['test_marl_interface',['../namespacedefiance_1_1test_1_1test__marl__interface.html',1,'defiance::test']]]
 ];

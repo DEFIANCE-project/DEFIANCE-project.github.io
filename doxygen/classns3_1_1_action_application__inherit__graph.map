@@ -1,7 +1,7 @@
 <map id="ns3::ActionApplication" name="ns3::ActionApplication">
 <area shape="rect" id="node1" title="This application is installed on a node where actions are applied." alt="" coords="5,155,172,181"/>
 <area shape="rect" id="node4" title=" " alt="" coords="12,229,165,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="190,229,305,256"/>
+<area shape="rect" id="node5" href="$classns3_1_1_test_action_app.html" title="Simple ActionApplication that can be reused for tests." alt="" coords="189,229,335,256"/>
 <area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="19,80,158,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="41,5,136,32"/>
 </map>

@@ -9,7 +9,7 @@ var annotated_dup =
           [ "ray", "namespacedefiance_1_1model_1_1agents_1_1ray.html", [
             [ "DefianceCallbacks", "classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks.html", "classdefiance_1_1model_1_1agents_1_1ray_1_1_defiance_callbacks" ]
           ] ],
-          [ "single", null, [
+          [ "single", "namespacedefiance_1_1model_1_1agents_1_1single.html", [
             [ "ray", "namespacedefiance_1_1model_1_1agents_1_1single_1_1ray.html", [
               [ "SingleDefianceCallbacks", "classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks.html", "classdefiance_1_1model_1_1agents_1_1single_1_1ray_1_1_single_defiance_callbacks" ]
             ] ]
@@ -41,8 +41,11 @@ var annotated_dup =
       [ "SocketCommunicationAttributes", "structns3_1_1_socket_communication_attributes.html", "structns3_1_1_socket_communication_attributes" ],
       [ "StaticMobComEnv", "classns3_1_1_static_mob_com_env.html", "classns3_1_1_static_mob_com_env" ],
       [ "SumoMobComEnv", "classns3_1_1_sumo_mob_com_env.html", null ],
+      [ "TestActionApp", "classns3_1_1_test_action_app.html", "classns3_1_1_test_action_app" ],
       [ "TestAgentApp", "classns3_1_1_test_agent_app.html", "classns3_1_1_test_agent_app" ],
+      [ "TestDataCollectorApp", "classns3_1_1_test_data_collector_app.html", "classns3_1_1_test_data_collector_app" ],
       [ "TestObservationApp", "classns3_1_1_test_observation_app.html", "classns3_1_1_test_observation_app" ],
+      [ "TestRewardApp", "classns3_1_1_test_reward_app.html", "classns3_1_1_test_reward_app" ],
       [ "TimestampedData", "classns3_1_1_timestamped_data.html", "classns3_1_1_timestamped_data" ],
       [ "TimestampedDataDeque", "classns3_1_1_timestamped_data_deque.html", "classns3_1_1_timestamped_data_deque" ],
       [ "TopologyCreator", "classns3_1_1_topology_creator.html", "classns3_1_1_topology_creator" ]

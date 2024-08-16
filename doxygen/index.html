@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>defiance: DeepCoMP with ns3-mmWave and ns3-ai</title>
+<title>defiance: DEFIANCE project: How to Simulate MARL Deployments in Realistic Network Scenarios</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,39 +86,60 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">DeepCoMP with ns3-mmWave and ns3-ai </div>  </div>
+<div class="title">DEFIANCE project: How to Simulate MARL Deployments in Realistic Network Scenarios </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__builds_bp_defiance_ns3_defiance_source_ns_3_40_contrib_defiance_README"></a> Our project mainly builds upon the <code>ns3</code> network simulator, <code>ns3-ai</code> for ML integration, and the <code>nr</code> module for the simulation of 5G wireless networks.</p>
+<div class="textblock"><p><a class="anchor" id="md__builds_bp_defiance_ns3_defiance_source_ns_3_40_contrib_defiance_README"></a> Our project mainly builds upon the <code>ns3</code> network simulator, <code>ns3-ai</code> for ML integration.</p>
 <h1><a class="anchor" id="autotoc_md19"></a>
+About the ns3-defiance repository</h1>
+<p>We provide a framework for ML and RL research using ns3. You can find our <a href="https://DEFIANCE-project.github.io">design documentation and user documentation here</a>.</p>
+<p>For a practical example of how our framework is used, see <a href="https://medium.com/@oliver.zimmermann/reinforcement-learning-in-ns3-part-1-698b9c30c0cd">this Medium article</a>. The blog is divided into two parts and demonstrates building a balancing inverted pendulum in a network scenario using our framework.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 Setup the development environment</h1>
-<h2><a class="anchor" id="autotoc_md20"></a>
-Installation with &lt;tt&gt;bake&lt;/tt&gt;</h2>
-<p>See <a href="https://gitlab.hpi.de/bp_defiance/bake-defiance">https://gitlab.hpi.de/bp_defiance/bake-defiance</a> for easy instructions.</p>
 <h2><a class="anchor" id="autotoc_md21"></a>
-Installation without &lt;tt&gt;bake&lt;/tt&gt;</h2>
-<p>The manual way: Clone ns-3.40 and put ns3-ai, 5g-lena and this repo inside the <code>contrib</code> folder. Follow their instructions for complete setup. Finally, build it with <code>ns3 build defiance</code>. Good luck.</p>
+Installation with &lt;tt&gt;bake&lt;/tt&gt;</h2>
+<p>See <a href="https://github.com/DEFIANCE-project/bake-defiance">https://github.com/DEFIANCE-project/bake-defiance</a> for easy instructions.</p>
 <h2><a class="anchor" id="autotoc_md22"></a>
+Docker</h2>
+<p>If you just want a docker container with a built ns3-defiance, head to <a href="https://github.com/DEFIANCE-project/bake-defiance">https://github.com/DEFIANCE-project/bake-defiance</a> and follow the steps to build the full image <code>defiance-full</code>.</p>
+<p>For users with a hpi login, you can add <code>--build-arg BASE=registry.gitlab.hpi.de/bp_defiance/bake-defiance:latest-full</code> after you logged in with <code>docker login registry.gitlab.hpi.de</code> instead of building <code>defiance-full</code> manually.</p>
+<p>For development, we supply a <code>Dockerfile</code> here, in which you can build your custom changes to ns3-defiance. It builds upon <code>defiance-full</code>, so make sure you have built or downloaded it beforehand. Then, you can build a docker image containing your local changes with a simple <code>docker build .</code>. The ns3 root directory is at <code>$NS3_HOME</code>; the default working directory. By default, ns3 and ns3-defiance are built directly. To skip the build, add <code>--build-arg BUILD_NS3=False</code>.</p>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Installation without &lt;tt&gt;bake&lt;/tt&gt;</h2>
+<p>The manual way:</p>
+<p>Requirements: Depending on your use-case, different dependencies are needed. For a complete list of all possible development dependencies, refer to <a href="https://github.com/DEFIANCE-project/bake-defiance/blob/main/.devcontainer/Dockerfile#L9">our devcontainer Dockerfile</a></p>
+<ol type="1">
+<li>Clone ns3 <code>git clone <a href="https://gitlab.com/nsnam/ns-3-dev.git">https://gitlab.com/nsnam/ns-3-dev.git</a> -b ns-3.40</code></li>
+<li>Some of our code needs that the environment variable <code>NS3_HOME</code> is set. Set it with <code>export NS3_HOME=/ns-3-dev</code></li>
+<li>Clone ns3-ai and ns3-defiance into <code>ns3/contrib</code>: ```shell-c cd ns-3-dev/ git clone <a href="https://github.com/DEFIANCE-project/ns3-ai">https://github.com/DEFIANCE-project/ns3-ai</a> contrib/ai git clone <a href="https://github.com/DEFIANCE-project/ns3-defiance">https://github.com/DEFIANCE-project/ns3-defiance</a> contrib/defiance ``<code></code></li>
+<li><code>Make sure, you have all dependencies. Running</code>./ns3 configure &ndash;enable-python &ndash;enable-examples &ndash;enable-tests` should succeed.</li>
+<li>Then, compile ns3-ai to generate the message types with protobuf: <code>./ns3 build ai</code></li>
+<li>Install the python requirements with <code>poetry install -C contrib/defiance</code></li>
+<li>Manually install the ns3-ai message types: <code>pip install -e ./contrib/ai/python_utils -e ./contrib/ai/model/gym-interface/py</code></li>
+<li>Compile everything with <code>./ns3 build</code></li>
+<li>You are now able to start the training of our example scenario, such as <code>defiance-balance2</code> with <code>run-agent train -n defiance-balance2</code>. See <code>run-agent --help</code> for more info.</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md24"></a>
 Development tools</h2>
-<p>This repo comes with additional developer tools.</p>
+<p>This repo comes with additional developer tools, which may be installed with <code>poetry install --with dev</code>.</p>
 <ul>
 <li>We format and lint our python code with <code>ruff</code>. Simply run <code>ruff check</code> to lint and <code>ruff format</code> to format.</li>
 <li>We enforce type-checking on our code with <code>mypy</code>. Simply run it!</li>
 <li>Optional jupyter notebook support can be installed with <code>poetry</code>. Simply run <code>poetry install --with ipynb</code>!</li>
 </ul>
-<p>In order to test ns3, it needs to be configured correctly. Refer to <a href="https://gitlab.hpi.de/bp_defiance/bake-defiance">https://gitlab.hpi.de/bp_defiance/bake-defiance</a> for a complete command suggestion.</p>
-<p>The ns3 testsuites in the <code>test</code> directory can be run with <code>./test.py -s &lt;test-suite&gt;</code>, e.g. <code>./test.py -s observation-app</code> for the <code>observation-app</code> testsuite in <code>/test/observation-application-test.cc</code>. For further information refer to <a href="https://www.nsnam.org/docs/manual/html/how-to-write-tests.html">https://www.nsnam.org/docs/manual/html/how-to-write-tests.html</a>.</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
-About the ns-defiance repository</h1>
-<p>We are building a framework for ML and RL research using ns3. More information will be added soon.</p>
-<p>When you run a ns3 simulation which uses ns3-ai, a segmentation fault occurs. A corresponding python agent is required to run the simulation. For this, you can use the <code>run-agent</code> cli program, i.e. <code>run-agent train</code> for training with ray and <code>run-agent debug</code> for debugging. </p>
+<p>In order to test ns3, it needs to be configured correctly. Refer to <a href="https://github.com/DEFIANCE-project/bake-defiance">https://github.com/DEFIANCE-project/bake-defiance</a> for a complete command suggestion.</p>
+<p>The ns3 testsuites in the <code>test</code> directory can be run with <code>./test.py -s &lt;test-suite&gt;</code>, e.g. <code>./test.py -s defiance-agent-application</code> for the <code>defiance-agent-application</code> testsuite in <code>/test/agent-application-test.cc</code>. For further information refer to <a href="https://www.nsnam.org/docs/manual/html/how-to-write-tests.html">https://www.nsnam.org/docs/manual/html/how-to-write-tests.html</a>.</p>
+<p>The special ns3-ai tests need to be executed with <code>./contrib/defiance/tests/run-python-tests.sh</code></p>
+<h1><a class="anchor" id="autotoc_md25"></a>
+Frequent problems</h1>
+<p>When you run a ns3 simulation which uses ns3-ai, a segmentation fault occurs. A corresponding python agent is required to run the simulation. For this, you can use the <code>run-agent</code> cli program, i.e. <code>run-agent train</code> for training with ray and <code>run-agent debug</code> for debugging and <code>run-agent random</code> for a random agent. Check out <code>run-agent -h</code> for help. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>RlApplicationHelper &#8212; DEFIANCE Module 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="rlapplicationhelper">
+<span id="defiance-application-helper"></span><h1>RlApplicationHelper<a class="headerlink" href="#rlapplicationhelper" title="Permalink to this headline">¶</a></h1>
+<p>As previously introduced, the DEFIANCE framework is mainly structured around user specific <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. They are derived from their specific base classes (e.g. <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>) and communicate relevant information with one another during the simulation.</p>
+<p>To simplify the creation of their instances, the <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code> class is provided. As with the typical helper classes already present in <em>ns-3</em>, it makes the creation of the applications more intuitive.</p>
+<p>The following example demonstrates how the <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code> can be used.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">RlApplicationHelper</span><span class="w"> </span><span class="nf">helper</span><span class="p">(</span><span class="n">TypeId</span><span class="o">::</span><span class="n">LookupByName</span><span class="p">(</span><span class="s">&quot;ns3::MyObservationApp&quot;</span><span class="p">));</span><span class="w"></span>
+
+<span class="c1">// the helper allows to set attributes for the applications</span>
+<span class="c1">// this is persistent for all the applications that will be created afterwards</span>
+<span class="n">helper</span><span class="p">.</span><span class="n">SetAttribute</span><span class="p">(</span><span class="s">&quot;StartTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TimeValue</span><span class="p">(</span><span class="n">Seconds</span><span class="p">(</span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="n">helper</span><span class="p">.</span><span class="n">SetAttribute</span><span class="p">(</span><span class="s">&quot;StopTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TimeValue</span><span class="p">(</span><span class="n">Seconds</span><span class="p">(</span><span class="mi">10</span><span class="p">)));</span><span class="w"></span>
+
+<span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">observationApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">myNodes1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">helper</span><span class="p">.</span><span class="n">SetTypeId</span><span class="p">(</span><span class="s">&quot;ns3::MyRewardApp&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">rewardApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">myNodes2</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">helper</span><span class="p">.</span><span class="n">SetTypeId</span><span class="p">(</span><span class="s">&quot;ns3::MyActionApp&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">actionApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">myNodes3</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">helper</span><span class="p">.</span><span class="n">SetTypeId</span><span class="p">(</span><span class="s">&quot;ns3::MyAgentApp&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">agentApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">myNodes4</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This example shows the main features of the <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code>. First of all, it wraps the created application instances in an <code class="code docutils literal notranslate"><span class="pre">RlApplicationContainer</span></code>. This container can be used like the standard <em>ns-3</em> <code class="code docutils literal notranslate"><span class="pre">ApplicationContainer</span></code> to access or iterate over the applications but does not require to cast the applications each time that DEFIANCE-specific functionality is required. Secondly, the helper allows to set attributes for the applications. This enables work with the <code class="code docutils literal notranslate"><span class="pre">TypeId</span></code> system, which makes it easy to set default arguments and to work with command line arguments. In the example above, the helper is used to create different types of applications but sets the same start and stop time for all of them.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">RlApplicationHelper</span></code> is not limited to the applications that are provided by the DEFIANCE framework. It can be used with any application that is derived from the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> class.</p>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="defiance.html">DEFIANCE Module</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="defiance-design.html">1. Design Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-user.html">2. User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-references.html">3. References</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="defiance.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/defiance-application-helper.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

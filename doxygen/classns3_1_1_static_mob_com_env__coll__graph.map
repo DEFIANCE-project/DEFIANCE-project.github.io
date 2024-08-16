@@ -1,6 +1,6 @@
 <map id="ns3::StaticMobComEnv" name="ns3::StaticMobComEnv">
-<area shape="rect" id="node1" title=" " alt="" coords="53,171,225,197"/>
-<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html" title=" " alt="" coords="72,95,207,121"/>
+<area shape="rect" id="node1" title="MobComEnv with static eNodeBs and UEs." alt="" coords="53,171,225,197"/>
+<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html" title="Environment specifically designed to train mobile communication related tasks." alt="" coords="72,95,207,121"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,5,116,32"/>
 <area shape="rect" id="node4" href="$classns3_1_1_device_manager.html" title="Contains the information about the nodes and devices of the simulation. Maintains subsets ot these no..." alt="" coords="141,5,295,32"/>
 </map>

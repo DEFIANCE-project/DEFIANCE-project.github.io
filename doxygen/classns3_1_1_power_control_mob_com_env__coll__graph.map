@@ -1,12 +1,12 @@
 <map id="ns3::PowerControlMobComEnv" name="ns3::PowerControlMobComEnv">
-<area shape="rect" id="node1" title=" " alt="" coords="475,421,697,448"/>
-<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html" title=" " alt="" coords="151,295,285,322"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,191,116,218"/>
-<area shape="rect" id="node4" href="$classns3_1_1_device_manager.html" title="Contains the information about the nodes and devices of the simulation. Maintains subsets ot these no..." alt="" coords="141,191,295,218"/>
-<area shape="rect" id="node5" title=" " alt="" coords="397,288,572,329"/>
-<area shape="rect" id="node6" title=" " alt="" coords="551,191,701,218"/>
-<area shape="rect" id="node7" title=" " alt="" coords="320,95,449,121"/>
-<area shape="rect" id="node8" title=" " alt="" coords="365,5,404,32"/>
-<area shape="rect" id="node9" title=" " alt="" coords="757,295,844,322"/>
-<area shape="rect" id="node10" title=" " alt="" coords="731,184,870,225"/>
+<area shape="rect" id="node1" title="Single agent environment for training power control with reinforcement learning." alt="" coords="353,332,576,359"/>
+<area shape="rect" id="node2" href="$classns3_1_1_mob_com_env.html" title="Environment specifically designed to train mobile communication related tasks." alt="" coords="141,206,276,233"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,102,116,129"/>
+<area shape="rect" id="node4" href="$classns3_1_1_device_manager.html" title="Contains the information about the nodes and devices of the simulation. Maintains subsets ot these no..." alt="" coords="141,102,295,129"/>
+<area shape="rect" id="node5" title=" " alt="" coords="300,199,475,240"/>
+<area shape="rect" id="node6" title=" " alt="" coords="413,102,543,129"/>
+<area shape="rect" id="node10" title=" " alt="" coords="499,206,649,233"/>
+<area shape="rect" id="node7" title=" " alt="" coords="459,5,497,32"/>
+<area shape="rect" id="node8" title=" " alt="" coords="673,206,760,233"/>
+<area shape="rect" id="node9" title=" " alt="" coords="647,95,786,136"/>
 </map>

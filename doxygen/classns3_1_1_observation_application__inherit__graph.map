@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="This application is installed on a node where observations occur." alt="" coords="597,56,803,83"/>
 <area shape="rect" id="node5" title=" " alt="" coords="871,5,1061,32"/>
 <area shape="rect" id="node6" title=" " alt="" coords="903,56,1029,83"/>
-<area shape="rect" id="node7" href="$classns3_1_1_test_observation_app.html" title=" " alt="" coords="875,107,1057,133"/>
+<area shape="rect" id="node7" href="$classns3_1_1_test_observation_app.html" title="Simple ObservationApplication that can be reused for tests." alt="" coords="875,107,1057,133"/>
 <area shape="rect" id="node8" title=" " alt="" coords="851,157,1081,184"/>
 <area shape="rect" id="node2" href="$classns3_1_1_data_collector_application.html" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="335,56,549,83"/>
 <area shape="rect" id="node3" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="148,56,287,83"/>

@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data History Container &#8212; DEFIANCE Module 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="data-history-container">
+<h1>Data History Container<a class="headerlink" href="#data-history-container" title="Permalink to this headline">¶</a></h1>
+<p>The data history container is used for storage of data in the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>, specifically the latest observations received from <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and latest rewards received from <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s. When creating the history container, specify how much data it should store before deleting old data. It is possile to also specify whether the <em>ns-3</em> simulation time should be tracked with every data entry. If the usage of another history container is desired somewhere else, create a new instance of <code class="code docutils literal notranslate"><span class="pre">HistoryContainer</span></code>. This can be useful for e.g. inter-agent communication.</p>
+<p>The data container generally accepts every form of <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>s, but when the included aggregation functions like average, minimum or maximum over the last <code class="code docutils literal notranslate"><span class="pre">n</span></code> entries are used, the aggregation functions will assume <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>s with <code class="code docutils literal notranslate"><span class="pre">OpenGymBoxContainer</span></code>s inside for them to work.</p>
+<p>By way of the observation history container: It has an individual queue for each <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> that is connected to the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>. It also consists of a queue that contains all observations across <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s. The same applies to the reward history container, but with <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s.</p>
+<p>In order to add data to the history container, call the method <code class="code docutils literal notranslate"><span class="pre">ns3::HistoryContainer::Push(ns3::Ptr&lt;ns3::OpenGymDictContainer&gt;</span> <span class="pre">data,</span> <span class="pre">uint</span> <span class="pre">id)</span></code>, which will add the data to the queue specified through <code class="code docutils literal notranslate"><span class="pre">id</span></code>. This doesn’t need to be done manually though, as the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> will automatically add the data to the history container when received from the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s. In order to do the same with agent messages, define a new history container and fill it accordingly in a method derived from <code class="code docutils literal notranslate"><span class="pre">AgentApplication::OnRecvFromAgent</span></code>.</p>
+<p>In order to get data from the history container, call the method <code class="code docutils literal notranslate"><span class="pre">HistoryContainer::GetNewestByID(uint</span> <span class="pre">id,</span> <span class="pre">uint</span> <span class="pre">n)</span></code>, which will return the data from the queue specified through <code class="code docutils literal notranslate"><span class="pre">id</span></code>. If necessary, use <code class="code docutils literal notranslate"><span class="pre">n</span></code> to specify the number of entries to retrieve. If the newest data across all queues is needed, call the method <code class="code docutils literal notranslate"><span class="pre">HistoryContainer::GetNewestOfCombinedHistory(uint</span> <span class="pre">n)</span></code>, which will return the latest <code class="code docutils literal notranslate"><span class="pre">n</span></code> entries across all queues. Note that this might not retrieve evenly distributed numbers of entries from the queues, but rather the overall newest entries because different queues might be filled at different rates.</p>
+<p>To get the average, minimum or maximum over the last <code class="code docutils literal notranslate"><span class="pre">n</span></code> entries, call the method <code class="code docutils literal notranslate"><span class="pre">HistoryContainer::AggregateNewest(uint</span> <span class="pre">id,</span> <span class="pre">uint</span> <span class="pre">n)</span></code>, which will return the average of the last <code class="code docutils literal notranslate"><span class="pre">n</span></code> entries from the queue specified through <code class="code docutils literal notranslate"><span class="pre">id</span></code>. This way, we can access the average, minimum or maximum of the last <code class="code docutils literal notranslate"><span class="pre">n</span></code> entries for each key of the <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>.</p>
+<p>It makes sense to retreive the data from the history container in the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> after the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> has received data from the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>s and <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code>s. Thus, the methods <code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">OnRecvObs(uint</span> <span class="pre">id)</span> <span class="pre">override</span></code> and <code class="code docutils literal notranslate"><span class="pre">void</span> <span class="pre">OnRecvRew(uint</span> <span class="pre">id)</span> <span class="pre">override</span></code> are the right place to retrieve the latest observations and rewards, respectively, or to do other calculations.</p>
+<p>For example, retrieve the newest observation from the history container with ID 0 like this:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRecvObs</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">obs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_obsDataStruct</span><span class="p">.</span><span class="n">GetNewestByID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-&gt;</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;floatObs&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                    </span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_observation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obs</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The following code creates a mapping of <code class="code docutils literal notranslate"><span class="pre">AggregatedInfo</span></code> of the last 10 entries for each key of the <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>, providing access to average, minimum and maximum values:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">agg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_obsDataStruct</span><span class="p">.</span><span class="n">AggregateNewest</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agg</span><span class="p">[</span><span class="s">&quot;floatObs&quot;</span><span class="p">].</span><span class="n">GetMin</span><span class="p">();</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agg</span><span class="p">[</span><span class="s">&quot;floatObs&quot;</span><span class="p">].</span><span class="n">GetMax</span><span class="p">();</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">avg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agg</span><span class="p">[</span><span class="s">&quot;floatObs&quot;</span><span class="p">].</span><span class="n">GetAvg</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="defiance.html">DEFIANCE Module</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="defiance-design.html">1. Design Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-user.html">2. User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-references.html">3. References</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="defiance.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/defiance-user-container.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

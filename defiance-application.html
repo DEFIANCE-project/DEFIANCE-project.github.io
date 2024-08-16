@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>RL-Applications &#8212; DEFIANCE Module 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="rl-applications">
+<span id="defiance-rl-applications"></span><h1>RL-Applications<a class="headerlink" href="#rl-applications" title="Permalink to this headline">¶</a></h1>
+<section id="rlapplication">
+<h2>RlApplication<a class="headerlink" href="#rlapplication" title="Permalink to this headline">¶</a></h2>
+<p>All presented applications inherit from <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>. Therefore, all of them can access the following functionality.</p>
+<section id="rlapplicationid">
+<h3>RlApplicationId<a class="headerlink" href="#rlapplicationid" title="Permalink to this headline">¶</a></h3>
+<p>A common use case is to identify the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> information has been sent to or received from.
+To accomplish this, each <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> has a unique identifer, their <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>.
+This ID can be set by passing an <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code> to <code class="code docutils literal notranslate"><span class="pre">RlApplication::SetId</span></code>.
+<code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code> is a struct consisting of an <code class="code docutils literal notranslate"><span class="pre">uint32_t</span> <span class="pre">applicationId</span></code> and an <code class="code docutils literal notranslate"><span class="pre">ApplicationType</span> <span class="pre">applicationType</span></code>.</p>
+<dl class="simple">
+<dt>This introduces four different types of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>:</dt><dd><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">OBSERVATION</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">REWARD</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">AGENT</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ACTION</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>If the provided <code class="code docutils literal notranslate"><span class="pre">CommunicationHelper</span></code> is not used, one must set all <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>s manually to be able to use inter-application communication.</p>
+</section>
+</section>
+<section id="agentapplication">
+<span id="defiance-agent-application"></span><h2>AgentApplication<a class="headerlink" href="#agentapplication" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> is where inference is performed. This code
+is an example of a possible implementation followed by an explanation.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">InferenceAgentApp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">AgentApplication</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">InferenceAgentApp</span><span class="p">()</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">AgentApplication</span><span class="p">()</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="o">~</span><span class="n">InferenceAgentApp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">{};</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TypeId</span><span class="w"> </span><span class="nf">GetTypeId</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">TypeId</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeId</span><span class="p">(</span><span class="s">&quot;ns3::InferenceAgentApp&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">                                </span><span class="p">.</span><span class="n">SetParent</span><span class="o">&lt;</span><span class="n">AgentApplication</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">                                </span><span class="p">.</span><span class="n">SetGroupName</span><span class="p">(</span><span class="s">&quot;defiance&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">                                </span><span class="p">.</span><span class="n">AddConstructor</span><span class="o">&lt;</span><span class="n">InferenceAgentApp</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tid</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Setup</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">AgentApplication</span><span class="o">::</span><span class="n">Setup</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">m_observation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetResetObservation</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="n">m_reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetResetReward</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRecvObs</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">        </span><span class="n">m_observation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_obsDataStruct</span><span class="p">.</span><span class="n">GetNewestByID</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">                   </span><span class="o">-&gt;</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;floatObs&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">                   </span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">        </span><span class="n">InferAction</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRecvReward</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">        </span><span class="n">m_reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_rewardDataStruct</span><span class="p">.</span><span class="n">GetNewestByID</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">                   </span><span class="o">-&gt;</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;reward&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">                   </span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">                   </span><span class="o">-&gt;</span><span class="n">GetValue</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="w">    </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymDataContainer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetResetObservation</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">        </span><span class="c1">// This method returns the initial observation that is used after resetting the environment.</span>
+<span class="linenos">46</span><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">shape</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">CreateObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">vShape</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="p">){</span><span class="n">obj</span><span class="o">-&gt;</span><span class="n">AddValue</span><span class="p">(</span><span class="mi">0</span><span class="p">);}</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">obj</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">GetResetReward</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">55</span><span class="w">        </span><span class="c1">// This method returns the initial reward that is used after resetting the environment.</span>
+<span class="linenos">56</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">58</span>
+<span class="linenos">59</span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">60</span><span class="w">    </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymSpace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetObservationSpace</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">63</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">vShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">shape</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">64</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">dtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeNameGet</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">-4.8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">INFINITY</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.418</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">INFINITY</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">67</span><span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">4.8</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">,</span><span class="w"> </span><span class="mf">0.418</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">CreateObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxSpace</span><span class="o">&gt;</span><span class="p">(</span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">vShape</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">70</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">71</span>
+<span class="linenos">72</span><span class="w">    </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymSpace</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetActionSpace</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">73</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">74</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MakeBoxSpace</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">76</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To implement your own <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> it is necessary to inherit from <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> in order
+to access all features provided by our framework. This can be seen in line 1.
+The method <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetTypeId</span></code> (lines 11-18) is mandatory, as it is part of the <em>ns-3</em> library. Since our
+classes inherit from <code class="code docutils literal notranslate"><span class="pre">ns3::Object</span></code> one has to provide this method to allow the usage of <em>ns-3</em>-factories and <em>ns-3</em>-pointers.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::Setup</span></code> is called at the beginning of the scenario and ensures that all required variables for inference
+are initialized. It is adviced to call the parent method (line 22) since it informs the MARL interface about the action and observation-space
+provided by <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetObservationSpace</span></code> and <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetActionSpace</span></code>.
+Aditionally the <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::Setup</span></code> method can be used to initialize <code class="code docutils literal notranslate"><span class="pre">m_observation</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_reward</span></code> since
+this method should always be called before the first occurence of inference and thereby guarantees that no uninitialized variables will be used for inference.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">m_observation</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_reward</span></code> are two inherited variables from the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> class.
+<code class="code docutils literal notranslate"><span class="pre">m_observation</span></code> is an <code class="code docutils literal notranslate"><span class="pre">OpenGymDataContainer</span></code> that stores the observations used for inference.
+<code class="code docutils literal notranslate"><span class="pre">m_reward</span></code> is simply a float value representing the current reward. Both of this variables are passed to the MARL interface when <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> is called (line 32).</p>
+<p><code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvObs</span></code> and <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvReward</span></code> are called when the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> receives
+an observation or reward. The <code class="code docutils literal notranslate"><span class="pre">id</span></code> is the ID of the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> that sent the data. It can be used to retrieve the desired data from <code class="code docutils literal notranslate"><span class="pre">m_obsDataStruct</span></code> or <code class="code docutils literal notranslate"><span class="pre">m_rewardDataStruct</span></code> by calling <code class="code docutils literal notranslate"><span class="pre">HistoryContainer::GetNewestByID(id)</span></code>
+(line 29). However, there is no restriction on how to update <code class="code docutils literal notranslate"><span class="pre">m_observation</span></code> or whether <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvObs</span></code> should be used at all.</p>
+<p>Both of the data structures <code class="code docutils literal notranslate"><span class="pre">m_obsDataStruct</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_rewardDataStruct</span></code> are instances of type <code class="code docutils literal notranslate"><span class="pre">HistoryContainer</span></code>. Once a reward
+or observation is received, the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> ensures both are updated accordingly before calling
+<code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvObs</span></code> or <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvReward</span></code>.</p>
+<p>In line 32, the method <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> is called. As mentioned earlier passes this method all required parameters for inference to the MARL interface. Aditionally, a callback
+is passed on that sends the returned action from the Python side to an <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>. Pass the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::applicationId</span></code>
+to <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> as in <code class="code docutils literal notranslate"><span class="pre">InferAction(id)</span></code> if the received action should only be send to an specific <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>.
+Otherwise the action will be sent to all registered instances. It is not required to call this method in
+<code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvObs</span></code>. For example <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> could also be called in a method that is scheduled at equally spaced timesteps
+or after an <em>ns-3</em>-event. If preferred, it is even possible to call inference outside of the <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code>. Since <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InferAction</span></code> is by design protected within <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>, this would require the
+usage of <code class="code docutils literal notranslate"><span class="pre">OpenGymMultiAgentInterface::NotifyCurrentState</span></code> and thus thorough testing.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvReward</span></code> is similar to <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvObs</span></code> in terms of when it is called and its purpose. Both of these
+methods allow to aggregate over the data received by multiple <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> instances. One example could calculate the min of all rewards sent
+by <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code> in the method <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::OnRecvReward</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetResetObservation</span></code> and <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetResetReward</span></code> are vital after a reset of the environment. Therefore, they must be implemented in the inheriting class. When setting up a scenario without training a Ray agent and no resets, they are optional, yet it is essential to initialize <code class="code docutils literal notranslate"><span class="pre">m_observation</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_reward</span></code> at the beginning of the scenario (e.g. ll.23-24).</p>
+<p>The last two important methods are <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetObservationSpace</span></code> and <code class="code docutils literal notranslate"><span class="pre">InferenceAgentApp::GetActionSpace</span></code>. These methods are mandatory
+because they inform the MARL interface about the dimensions of the respective spaces. Information about the different spaces have to
+be provided in instances of <code class="code docutils literal notranslate"><span class="pre">OpenGymSpace</span></code>. An exemplary creation of such spaces can be seen in line 62 to 69. These spaces as well as the
+<code class="code docutils literal notranslate"><span class="pre">OpenGymDataContainer</span></code> are part of the <em>ns-3</em>-ai library. To reduce the overhead of creating an <code class="code docutils literal notranslate"><span class="pre">OpenGymSpace</span></code> or <code class="code docutils literal notranslate"><span class="pre">OpenGymDataContainer</span></code>,
+some useful functions are provided in <code class="code docutils literal notranslate"><span class="pre">base-test.h</span></code>. An example usage of one of these functions can be seen in line 74.</p>
+<section id="additional-features-and-use-cases">
+<h3>Additional Features and Use-Cases<a class="headerlink" href="#additional-features-and-use-cases" title="Permalink to this headline">¶</a></h3>
+<section id="configure-history-containers">
+<h4>Configure History Containers<a class="headerlink" href="#configure-history-containers" title="Permalink to this headline">¶</a></h4>
+<p>The length of <code class="code docutils literal notranslate"><span class="pre">m_rewardDataStruct</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_obsDataStruct</span></code> can be changed by setting the attribute <code class="code docutils literal notranslate"><span class="pre">MaxRewardHistoryLength</span></code>
+or <code class="code docutils literal notranslate"><span class="pre">MaxObservationHistoryLength</span></code>.</p>
+<p>It is also possible to save a timestamp, marking the time of arrival in <code class="code docutils literal notranslate"><span class="pre">m_rewardDataStruct</span></code> and <code class="code docutils literal notranslate"><span class="pre">m_obsDataStruct</span></code>.
+If this feature is required, set <code class="code docutils literal notranslate"><span class="pre">ObservationTimestamping</span></code> or <code class="code docutils literal notranslate"><span class="pre">RewardTimestamping</span></code> to true.
+More information is given in <a href="#id1"><span class="problematic" id="id2">`Data History Container`_</span></a>.</p>
+</section>
+<section id="provide-extra-info">
+<h4>Provide Extra Info<a class="headerlink" href="#provide-extra-info" title="Permalink to this headline">¶</a></h4>
+<p>To pass extra info to the environment, override the method <code class="code docutils literal notranslate"><span class="pre">AgentApplication::GetExtraInfo</span></code></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_importantMessage</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetExtraInfo</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">info</span><span class="p">[</span><span class="s">&quot;agent&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_importantMessage</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">info</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="action-delay">
+<h4>Action Delay<a class="headerlink" href="#action-delay" title="Permalink to this headline">¶</a></h4>
+<p>To simulate the time required to calculate inference, a delay can be set between receiving an action and performing
+the callback specified for action execution.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_importantMessage</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Time</span><span class="w"> </span><span class="nf">GetActionDelay</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Seconds</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="override-initiateaction-and-initiateactionforapp">
+<h4>Override initiateAction and initiateActionForApp<a class="headerlink" href="#override-initiateaction-and-initiateactionforapp" title="Permalink to this headline">¶</a></h4>
+<p>After inference took place, either of these methods is invoked with the returned action from the MARL interface.
+This method then sends the received message to either all registered <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> or the one that matches <code class="code docutils literal notranslate"><span class="pre">remoteAppId</span></code>.
+Overriding this method allows for example to only send over a specific <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* in your AgentApplication-class: */</span><span class="w"></span>
+<span class="k">protected</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">interfaceToUse</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">InitiateActionForApp</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">remoteAppId</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymDataContainer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">SendAction</span><span class="p">(</span><span class="n">MakeDictContainer</span><span class="p">(</span><span class="s">&quot;default&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">action</span><span class="p">),</span><span class="w"> </span><span class="n">remoteAppId</span><span class="p">,</span><span class="w"> </span><span class="n">interfaceToUse</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="onrecvfromagent">
+<h4>OnRecvFromAgent<a class="headerlink" href="#onrecvfromagent" title="Permalink to this headline">¶</a></h4>
+<p>To specify how an <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> should handle messages from another <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>, override this method.</p>
+<p>The method receives a <code class="code docutils literal notranslate"><span class="pre">remoteAppId</span></code> matching the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::applicationId</span></code> of the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> that send the data and
+the message itself as a <code class="code docutils literal notranslate"><span class="pre">Ptr&lt;OpenGymDictContainer&gt;</span></code>. Here is an example for this:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cm">/* in your AgentApplication-class: */</span><span class="w"></span>
+<span class="k">protected</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">agentOfInterest</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRecvFromAgent</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">remoteAppId</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymDictContainer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">payload</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">remoteAppId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">agentOfInterest</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">payload</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;parameter&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                   </span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="w">                   </span><span class="o">-&gt;</span><span class="n">GetValue</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p id="defiance-observation-application">If desired, a new <code class="code docutils literal notranslate"><span class="pre">HistoryContainer</span></code> can be added to the class which can be used to store and retrieve the received agent messages in a similar fashion as the observations and rewards.</p>
+</section>
+</section>
+</section>
+<section id="observationapplication">
+<h2>ObservationApplication<a class="headerlink" href="#observationapplication" title="Permalink to this headline">¶</a></h2>
+<p>The main purpose of the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> is to send observations to the agent.
+Therefore, the class is equipped with the methods <code class="code docutils literal notranslate"><span class="pre">ObservationApplication::RegisterCallbacks</span></code> and <code class="code docutils literal notranslate"><span class="pre">ObservationApplication::Send</span></code>.
+To implement an <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>, create a child class that inherits from
+<code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>. This also requires overriding <code class="code docutils literal notranslate"><span class="pre">GetTypeId</span></code> in a similar fashion as seen earlier in the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> example.</p>
+<section id="observationapplication-registercallbacks">
+<h3>ObservationApplication::RegisterCallbacks<a class="headerlink" href="#observationapplication-registercallbacks" title="Permalink to this headline">¶</a></h3>
+<p>This method allows registration of callbacks to trace sources. This ensures the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>
+is always informed when a value that should be observed changes.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">YourImplementation</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ObservationApplication</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"></span>
+<span class="w">    </span><span class="n">RegisterCallbacks</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourNode</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetNode</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">m_reportYourTrace</span><span class="p">.</span><span class="n">ConnectWithoutContext</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">MakeCallback</span><span class="p">(</span><span class="o">&amp;</span><span class="n">YourImplementation</span><span class="o">::</span><span class="n">Observe</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Observe</span><span class="p">(</span><span class="cm">/*values provided by the trace source*/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cm">/* send observation or wait for more observation */</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It can be tricky to access the required trace source inside the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> class, especially if the trace source is not provided by <em>ns-3</em>. In this example,
+the costume trace source is accessed by inheriting the <code class="code docutils literal notranslate"><span class="pre">Node</span></code> class and adding the
+trace source as a class member. All <code class="code docutils literal notranslate"><span class="pre">ns3::Application</span></code> instances can access the node they are
+installed on with <code class="code docutils literal notranslate"><span class="pre">GetNode</span></code>. Alternatively, trace sources can be accessed by a
+<em>ns-3</em> path. Look into the <em>ns-3</em> documentation for more information.</p>
+</div>
+</section>
+<section id="observationapplication-send">
+<h3>ObservationApplication::Send<a class="headerlink" href="#observationapplication-send" title="Permalink to this headline">¶</a></h3>
+<p>Once the <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> is satisfied with the observations, it can send these observations to registered instances of <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>.
+This functionality is offered by the base class. The observations have to be wrapped into an <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>. If an observation
+should only be sent to a specific agent, pass the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code> to <code class="code docutils literal notranslate"><span class="pre">ObservationApplication::Send</span></code>. Furthermore, the ID of the <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>
+can be provided. If not provided, the observation is sent to all registered instances.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">YourImplementation</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ObservationApplication</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Observe</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cm">/*create OpenGymDataContainer */</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">Send</span><span class="p">(</span><span class="cm">/*OpenGymDictContainer*/</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// or</span>
+<span class="w">        </span><span class="n">Send</span><span class="p">(</span><span class="cm">/*OpenGymDictContainer*/</span><span class="p">,</span><span class="w"> </span><span class="n">remoteId</span><span class="p">,</span><span class="w"> </span><span class="n">interfaceId</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="rewardapplication">
+<span id="defiance-reward-application"></span><h2>RewardApplication<a class="headerlink" href="#rewardapplication" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code> is in its functionality similar to <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> since both classes inherit from the same base class.
+A reward should be sent to an instance of <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> once a relevant event is triggered. To
+accomplish that the <code class="code docutils literal notranslate"><span class="pre">RewardApplication::Send</span></code> is provided. It is required to wrap all reward information into an <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">YourImplementation</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">RewardApplication</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"></span>
+<span class="w">    </span><span class="n">RegisterCallbacks</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourNode</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetNode</span><span class="p">())</span><span class="o">-&gt;</span><span class="n">m_reportYourTrace</span><span class="p">.</span><span class="n">ConnectWithoutContext</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">MakeCallback</span><span class="p">(</span><span class="o">&amp;</span><span class="n">YourImplementation</span><span class="o">::</span><span class="n">ObserveReward</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">ObserveReward</span><span class="p">(</span><span class="cm">/*values provided by the trace source*/</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cm">/*create OpenGymDataContainer */</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">Send</span><span class="p">(</span><span class="cm">/*OpenGymDictContainer*/</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// or</span>
+<span class="w">        </span><span class="n">Send</span><span class="p">(</span><span class="cm">/*OpenGymDictContainer*/</span><span class="p">,</span><span class="w"> </span><span class="n">remoteID</span><span class="p">,</span><span class="w"> </span><span class="n">interfaceId</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="actionapplication">
+<span id="defiance-action-application"></span><h2>ActionApplication<a class="headerlink" href="#actionapplication" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> receives actions and executes them. Therefore, upon receiving an action from an <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code>, the virtual method <code class="code docutils literal notranslate"><span class="pre">ActionApplication::ExecuteAction</span></code> is triggered.
+To specify what action should be performed, override the <code class="code docutils literal notranslate"><span class="pre">ActionApplication::ExecuteAction</span></code> in a child class.</p>
+<section id="actionapplication-executeaction">
+<h3>ActionApplication::ExecuteAction<a class="headerlink" href="#actionapplication-executeaction" title="Permalink to this headline">¶</a></h3>
+<p>In this method, two parameters are accessible. <code class="code docutils literal notranslate"><span class="pre">remoteAppId</span></code> is the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code> of the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> that sent
+the action. <code class="code docutils literal notranslate"><span class="pre">action</span></code> is an <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code> that contains the sent action out of the action space.
+An exemplary retrieval of the actual content of <code class="code docutils literal notranslate"><span class="pre">action</span></code> is provided in line 19. <code class="code docutils literal notranslate"><span class="pre">action-&gt;Get(&quot;default&quot;)</span></code> returns an
+<code class="code docutils literal notranslate"><span class="pre">OpenGymDataContainer</span></code>. Therefore, it is necessary to dynamically cast this <code class="code docutils literal notranslate"><span class="pre">OpenGymDataContainer</span></code> to the type that was sent by the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> (e.g. with <code class="code docutils literal notranslate"><span class="pre">GetObject&lt;OpenGymBoxContainer&lt;int&gt;&gt;()</span></code>). If the content of <code class="code docutils literal notranslate"><span class="pre">action</span></code> at key: <code class="code docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code> doesn’t
+match the type passed to <code class="code docutils literal notranslate"><span class="pre">GetObject</span></code>, a null pointer will be returned even if its only a mismatch in the provided data type
+for <code class="code docutils literal notranslate"><span class="pre">OpenGymBoxContainer</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that the <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span> <span class="pre">action</span></code> actually contains the key passed by <code class="code docutils literal notranslate"><span class="pre">action-&gt;Get(&quot;default&quot;)</span></code>.
+The <code class="code docutils literal notranslate"><span class="pre">AgentApplication::InitiateAction</span></code> will always wrap the received action from the MARL interface into an <code class="code docutils literal notranslate"><span class="pre">OpenGymDictContainer</span></code>
+with the key <code class="code docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code>. However, if this method was overridden in a child class, a different key is possible.</p>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">YourActionApp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ActionApplication</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">YourActionApp</span><span class="p">(){};</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="o">~</span><span class="n">YourActionApp</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">{};</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">TypeId</span><span class="w"> </span><span class="nf">GetTypeId</span><span class="p">()</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">TypeId</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeId</span><span class="p">(</span><span class="s">&quot;ns3::YourActionApp&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">                                </span><span class="p">.</span><span class="n">SetParent</span><span class="o">&lt;</span><span class="n">ActionApplication</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">                                </span><span class="p">.</span><span class="n">SetGroupName</span><span class="p">(</span><span class="s">&quot;defiance&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">                                </span><span class="p">.</span><span class="n">AddConstructor</span><span class="o">&lt;</span><span class="n">YourActionApp</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tid</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">ExecuteAction</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">remoteAppId</span><span class="p">,</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymDictContainer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="c1">// auto m_objectActionIsPerformedOn = DynamicCast&lt;objectActionIsPerformedOn&gt;(GetNode());</span>
+<span class="linenos">19</span><span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">act</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">action</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="s">&quot;default&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">GetObject</span><span class="o">&lt;</span><span class="n">OpenGymBoxContainer</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetValue</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">        </span><span class="n">m_objectActionIsPerformedOn</span><span class="o">-&gt;</span><span class="n">SetValue</span><span class="p">(</span><span class="n">acc</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">SetObservationApp</span><span class="p">(</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">ActionObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">object</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">        </span><span class="n">m_objectActionIsPerformedOn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">object</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">    </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">ActionObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">objectActionIsPerformedOn</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">31</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To perform the action, the <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> needs a reference to the object it perfoms the action on.
+One solution would be to pass it to the application as seen in line 24-27. Alternatively, the <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> could access the node it is installed on.</p>
+</section>
+</section>
+<section id="communication-between-rl-applications">
+<h2>Communication between RL-Applications<a class="headerlink" href="#communication-between-rl-applications" title="Permalink to this headline">¶</a></h2>
+<section id="add-interfaces">
+<h3>Add interfaces<a class="headerlink" href="#add-interfaces" title="Permalink to this headline">¶</a></h3>
+<p>To properly use the RL applications, connect them to one another via the <a href="#id3"><span class="problematic" id="id4">`ChannelInterface`_</span></a>.
+The <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> interface provides the method <code class="code docutils literal notranslate"><span class="pre">RlApplication::AddInterface</span></code> to register a <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>.
+Two applications can be connected over multiple instances of <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>, enabling potential multipath functionality. To index the different <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code> between
+two applications, an <code class="code docutils literal notranslate"><span class="pre">interfaceId</span></code> has to be provided. <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code> in combination with the <code class="code docutils literal notranslate"><span class="pre">interfaceId</span></code> represents an
+unique identifer for a connection between two instances of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">AddInterface</span></code> also sets up necessary callbacks for receiving messages.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//code to create your agent</span>
+<span class="linenos"> 2</span><span class="n">RlApplicationHelper</span><span class="w"> </span><span class="nf">helper</span><span class="p">(</span><span class="n">TypeId</span><span class="o">::</span><span class="n">LookupByName</span><span class="p">(</span><span class="s">&quot;ns3::YourAgentClass&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="n">helper</span><span class="p">.</span><span class="n">SetAttribute</span><span class="p">(</span><span class="s">&quot;StartTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TimeValue</span><span class="p">(</span><span class="n">Seconds</span><span class="p">(</span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="n">helper</span><span class="p">.</span><span class="n">SetAttribute</span><span class="p">(</span><span class="s">&quot;StopTime&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TimeValue</span><span class="p">(</span><span class="n">Seconds</span><span class="p">(</span><span class="mi">10</span><span class="p">)));</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">agentApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">agentNode</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">//code to create your observationApp</span>
+<span class="linenos"> 8</span><span class="n">helper</span><span class="p">.</span><span class="n">SetTypeId</span><span class="p">(</span><span class="s">&quot;ns3::YourObservationApp&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="n">RlApplicationContainer</span><span class="w"> </span><span class="n">observationApps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">helper</span><span class="p">.</span><span class="n">Install</span><span class="p">(</span><span class="n">obsNode</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">RlApplicationId</span><span class="w"> </span><span class="n">remoteIdObservationApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourObservationApp</span><span class="o">&gt;</span><span class="p">(</span><span class="n">observationApps</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">GetId</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">12</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">YourAgentClass</span><span class="o">&gt;</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourAgentClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">agentApps</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
+<span class="hll"><span class="linenos">13</span><span class="n">uint</span><span class="w"> </span><span class="n">interfaceAtAgentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="n">remoteIdObservationApp</span><span class="p">,</span><span class="w"> </span><span class="n">ptrToChannelInterface</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">RlApplicationId</span><span class="w"> </span><span class="n">remoteAgentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourAgentClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">agentApps</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">-&gt;</span><span class="n">GetId</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">16</span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">YourObservationApp</span><span class="o">&gt;</span><span class="w"> </span><span class="n">obsApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicCast</span><span class="o">&lt;</span><span class="n">YourObservationApp</span><span class="o">&gt;</span><span class="p">(</span><span class="n">observationApps</span><span class="p">.</span><span class="n">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w"></span>
+<span class="hll"><span class="linenos">17</span><span class="n">uint</span><span class="w"> </span><span class="n">interfaceAtObservationId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">obsApp</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="n">remoteAgentId</span><span class="p">,</span><span class="w"> </span><span class="n">ptrToChannelInterface</span><span class="p">);</span><span class="w"></span>
+</span></pre></div>
+</div>
+<p>Note that the functionality of this method is only provided for foreseen connections of the framework. For example it is necessary that
+an <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> can exchange data with all other types of <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s. Therefore the call of <code class="code docutils literal notranslate"><span class="pre">AgentApplication::AddInterface</span></code>
+will succeed as long as the provided <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::ApplicationType</span></code> matches any of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">OBSERVATION</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">REWARD</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">AGENT</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ACTION</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>However, if one tries to add a <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code> to an <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> that is connected to another <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code>, the method
+would result in an error because the exchange between two <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> is deliberately excluded in the design of <em>ns3-defiance</em>.</p>
+<p>When adding the <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>, the application can derive the <code class="code docutils literal notranslate"><span class="pre">ApplicationType</span></code> from the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId</span></code>.
+This allows the application to properly handle the connection.</p>
+<p>After registering the <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>, the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> is ready to send.</p>
+</section>
+<section id="send">
+<h3>Send<a class="headerlink" href="#send" title="Permalink to this headline">¶</a></h3>
+<p>Call this method to send data over a registered <code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code>. Note that the different <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code>s often wrap
+the <code class="code docutils literal notranslate"><span class="pre">RlApplication::Send</span></code> for general use cases. Therefore, refrain from using <code class="code docutils literal notranslate"><span class="pre">RlApplication::Send</span></code> and use the respective appropiate method offered by each application instead. These methods
+often ensure additional necessary prerequisites for proper communication (e.g. registering callbacks).</p>
+<p>Even though these wrapped methods differ in their functionality they are all called in a similar manner.
+There are always 3 arguments: <code class="code docutils literal notranslate"><span class="pre">Ptr&lt;OpenGymDictContainer&gt;</span> <span class="pre">data,</span> <span class="pre">uint32_t</span> <span class="pre">appId,</span> <span class="pre">uint32_t</span> <span class="pre">interfaceIndex</span></code>.
+The first argument is required - the data that is supposed to be sent. The second argument is the
+<code class="code docutils literal notranslate"><span class="pre">appId</span></code>. If provided, the data will only be sent to the <code class="code docutils literal notranslate"><span class="pre">RlApplication</span></code> that has a matching <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::applicationId</span></code>.
+The third argument the <code class="code docutils literal notranslate"><span class="pre">interfaceIndex</span></code> can be specified alongside the <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::applicationId</span></code>. This ensures that only a specific
+<code class="code docutils literal notranslate"><span class="pre">ChannelInterface</span></code> is used. The index of an interface is returned by the <code class="code docutils literal notranslate"><span class="pre">AddInterface</span></code> method.
+If the <code class="code docutils literal notranslate"><span class="pre">interfaceIndex</span></code> is not set, all interfaces between the two applications are used.
+Similarly, if the <code class="code docutils literal notranslate"><span class="pre">appId</span></code> is not set the data is sent to all registered applications of that type over all interfaces.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// method to send actions from agent to action app</span>
+<span class="n">uint</span><span class="w"> </span><span class="n">interfaceIdActionApp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agentApp</span><span class="o">-&gt;</span><span class="n">AddInterface</span><span class="p">(</span><span class="n">remoteActionId</span><span class="p">,</span><span class="w"> </span><span class="n">ptrToChannelInterface</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Ptr</span><span class="o">&lt;</span><span class="n">OpenGymDictContainer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* create DictContainer */</span><span class="w"></span>
+
+<span class="c1">//send to all</span>
+<span class="n">SendAction</span><span class="p">(</span><span class="n">action</span><span class="p">);</span><span class="w"></span>
+<span class="c1">//send to specific application</span>
+<span class="n">SendAction</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">remoteActionId</span><span class="p">);</span><span class="w"></span>
+<span class="c1">//send to specific application over specific channelInterface</span>
+<span class="n">SendAction</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">remoteActionId</span><span class="p">,</span><span class="w"> </span><span class="n">interfaceIdActionApp</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="agentapplication-communication">
+<h3>AgentApplication Communication<a class="headerlink" href="#agentapplication-communication" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> can communicate with applications of any <code class="code docutils literal notranslate"><span class="pre">RlApplicationId::ApplicationType</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">OBSERVATION</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">REWARD</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">AGENT</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">ACTION</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>See <a class="reference internal" href="#add-interfaces">Add interfaces</a> for more information on how to set it up.</p>
+<p>To fulfill its functionality, the <code class="code docutils literal notranslate"><span class="pre">AgentApplication</span></code> is equipped with two methods - <code class="code docutils literal notranslate"><span class="pre">SendAction</span></code> and <code class="code docutils literal notranslate"><span class="pre">SendToAgent</span></code>.
+They are invoked as described in <a class="reference internal" href="#send">Send</a>. <code class="code docutils literal notranslate"><span class="pre">SendAction</span></code> only sends to applications of type <code class="code docutils literal notranslate"><span class="pre">ACTION</span></code>, while
+<code class="code docutils literal notranslate"><span class="pre">SendToAgent</span></code> only sends to applications of type <code class="code docutils literal notranslate"><span class="pre">AGENT</span></code>.</p>
+</section>
+<section id="rewardapplication-communication-and-observationapplication-communication">
+<h3>RewardApplication Communication and ObservationApplication Communication<a class="headerlink" href="#rewardapplication-communication-and-observationapplication-communication" title="Permalink to this headline">¶</a></h3>
+<p>Both applications only allow communication to applications of type <code class="code docutils literal notranslate"><span class="pre">AGENT</span></code>. See <a class="reference internal" href="#add-interfaces">Add interfaces</a> on how to add interfaces.</p>
+<p>The interface of <code class="code docutils literal notranslate"><span class="pre">RewardApplication</span></code> and <code class="code docutils literal notranslate"><span class="pre">ObservationApplication</span></code> offers a <code class="code docutils literal notranslate"><span class="pre">Send</span></code> method (through their parent class <code class="code docutils literal notranslate"><span class="pre">DataCollectorApplication</span></code>)
+that works as described in <a class="reference internal" href="#send">Send</a>. The passed data should be used by the agent to determine the reward or update its observation.</p>
+</section>
+<section id="actionapplication-communication">
+<h3>ActionApplication Communication<a class="headerlink" href="#actionapplication-communication" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ActionApplication</span></code> only allows applications of type <code class="code docutils literal notranslate"><span class="pre">AGENT</span></code> to be added. See <a class="reference internal" href="#add-interfaces">Add interfaces</a> on how to add interfaces.</p>
+<p>It doesn’t wrap the <code class="code docutils literal notranslate"><span class="pre">Send</span></code> method because it is not supposed to send, but only receive.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="defiance.html">DEFIANCE Module</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="defiance-design.html">1. Design Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-user.html">2. User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defiance-references.html">3. References</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="defiance.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/defiance-application.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

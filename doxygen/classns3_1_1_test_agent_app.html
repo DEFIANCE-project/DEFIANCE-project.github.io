@@ -93,6 +93,11 @@ $(document).ready(function(){initNavTree('classns3_1_1_test_agent_app.html','');
 <div class="title">ns3::TestAgentApp Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Simple <a class="el" href="classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network.">AgentApplication</a> that can be reused for tests.  
+ <a href="classns3_1_1_test_agent_app.html#details">More...</a></p>
+
+<p><code>#include &quot;<a class="el" href="base-test_8h_source.html">base-test.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for ns3::TestAgentApp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -100,7 +105,7 @@ $(document).ready(function(){initNavTree('classns3_1_1_test_agent_app.html','');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classns3_1_1_test_agent_app__inherit__graph.png" border="0" usemap="#ans3_1_1_test_agent_app_inherit__map" alt="Inheritance graph"/></div>
 <map name="ans3_1_1_test_agent_app_inherit__map" id="ans3_1_1_test_agent_app_inherit__map">
-<area shape="rect" title=" " alt="" coords="16,229,159,256"/>
+<area shape="rect" title="Simple AgentApplication that can be reused for tests." alt="" coords="16,229,159,256"/>
 <area shape="rect" href="classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network." alt="" coords="5,155,169,181"/>
 <area shape="rect" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="18,80,157,107"/>
 <area shape="rect" title=" " alt="" coords="40,5,135,32"/>
@@ -113,7 +118,7 @@ $(document).ready(function(){initNavTree('classns3_1_1_test_agent_app.html','');
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classns3_1_1_test_agent_app__coll__graph.png" border="0" usemap="#ans3_1_1_test_agent_app_coll__map" alt="Collaboration graph"/></div>
 <map name="ans3_1_1_test_agent_app_coll__map" id="ans3_1_1_test_agent_app_coll__map">
-<area shape="rect" title=" " alt="" coords="1617,56,1760,83"/>
+<area shape="rect" title="Simple AgentApplication that can be reused for tests." alt="" coords="1617,56,1760,83"/>
 <area shape="rect" href="classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network." alt="" coords="1404,56,1568,83"/>
 <area shape="rect" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="995,5,1133,32"/>
 <area shape="rect" title=" " alt="" coords="655,5,750,32"/>
@@ -132,12 +137,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac49153bb3860d2e0a94883aa04ed3bae"><td class="memItemLeft" align="right" valign="top"><a id="ac49153bb3860d2e0a94883aa04ed3bae"></a>
 Ptr&lt; OpenGymSpace &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetActionSpace</b> () override</td></tr>
 <tr class="separator:ac49153bb3860d2e0a94883aa04ed3bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a174bdac4ddd5e1f4d5d2302ae470db"><td class="memItemLeft" align="right" valign="top"><a id="a6a174bdac4ddd5e1f4d5d2302ae470db"></a>
-std::map&lt; uint, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetLatest</b> () const</td></tr>
-<tr class="separator:a6a174bdac4ddd5e1f4d5d2302ae470db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ff61f33c031c1d3f198a86d9b30b911"><td class="memItemLeft" align="right" valign="top"><a id="a9ff61f33c031c1d3f198a86d9b30b911"></a>
+std::map&lt; uint, std::vector&lt; float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetMessage</b> () const</td></tr>
+<tr class="separator:a9ff61f33c031c1d3f198a86d9b30b911"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db29800d80c1f9f6e7fab0ee9fed11c"><td class="memItemLeft" align="right" valign="top"><a id="a8db29800d80c1f9f6e7fab0ee9fed11c"></a>
+std::map&lt; uint, std::vector&lt; float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetObservation</b> () const</td></tr>
+<tr class="separator:a8db29800d80c1f9f6e7fab0ee9fed11c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafb6939685c1f18a4e74888056a9996f"><td class="memItemLeft" align="right" valign="top"><a id="aafb6939685c1f18a4e74888056a9996f"></a>
 Ptr&lt; OpenGymSpace &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetObservationSpace</b> () override</td></tr>
 <tr class="separator:aafb6939685c1f18a4e74888056a9996f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bfe16045a96506df842aeeacd46b490"><td class="memItemLeft" align="right" valign="top"><a id="a4bfe16045a96506df842aeeacd46b490"></a>
+std::map&lt; uint, std::vector&lt; float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetReward</b> () const</td></tr>
+<tr class="separator:a4bfe16045a96506df842aeeacd46b490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d493c9fc22fbca5672c7d3f0bec89d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_test_agent_app.html#a3d493c9fc22fbca5672c7d3f0bec89d5">OnRecvFromAgent</a> (uint remoteAppId, Ptr&lt; OpenGymDictContainer &gt; payload) override</td></tr>
+<tr class="memdesc:a3d493c9fc22fbca5672c7d3f0bec89d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a message is received from an agent.  <a href="classns3_1_1_test_agent_app.html#a3d493c9fc22fbca5672c7d3f0bec89d5">More...</a><br /></td></tr>
+<tr class="separator:a3d493c9fc22fbca5672c7d3f0bec89d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af83370782f33936c4ca9723b0556921e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">OnRecvObs</a> (uint remoteAppId) override</td></tr>
 <tr class="memdesc:af83370782f33936c4ca9723b0556921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an observation was received. The observation was already stored in <code>m_obsDataStruct</code>. Once there are enough observations, <code><a class="el" href="classns3_1_1_agent_application.html#a03ead3fe229723b8885cc632cf03dda0">InferAction()</a></code> should be called to begin the inference cycle.  <a href="classns3_1_1_test_agent_app.html#af83370782f33936c4ca9723b0556921e">More...</a><br /></td></tr>
 <tr class="separator:af83370782f33936c4ca9723b0556921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,7 +215,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a9ccf50f49b21062f2050ca00840872f0 inherit pub_methods_classns3_1_1_rl_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve default IP address for new interfaces.  <a href="classns3_1_1_rl_application.html#a9ccf50f49b21062f2050ca00840872f0">More...</a><br /></td></tr>
 <tr class="separator:a9ccf50f49b21062f2050ca00840872f0 inherit pub_methods_classns3_1_1_rl_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a5c1982b4a746ee193858cf6327b64d inherit pub_methods_classns3_1_1_rl_application"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_rl_application.html#a6a5c1982b4a746ee193858cf6327b64d">GetId</a> ()</td></tr>
-<tr class="memdesc:a6a5c1982b4a746ee193858cf6327b64d inherit pub_methods_classns3_1_1_rl_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> of a specific RL application.  <a href="classns3_1_1_rl_application.html#a6a5c1982b4a746ee193858cf6327b64d">More...</a><br /></td></tr>
+<tr class="memdesc:a6a5c1982b4a746ee193858cf6327b64d inherit pub_methods_classns3_1_1_rl_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the <a class="el" href="structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff...">RlApplicationId</a> of a specific RL application.  <a href="classns3_1_1_rl_application.html#a6a5c1982b4a746ee193858cf6327b64d">More...</a><br /></td></tr>
 <tr class="separator:a6a5c1982b4a746ee193858cf6327b64d inherit pub_methods_classns3_1_1_rl_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a941b7bfa7f822d08568f6df6429a3a2f inherit pub_methods_classns3_1_1_rl_application"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_rl_application.html#a941b7bfa7f822d08568f6df6429a3a2f">SetDefaultAddress</a> (Ipv4Address address)</td></tr>
 <tr class="memdesc:a941b7bfa7f822d08568f6df6429a3a2f inherit pub_methods_classns3_1_1_rl_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set default IP address that is used for new interfaces.  <a href="classns3_1_1_rl_application.html#a941b7bfa7f822d08568f6df6429a3a2f">More...</a><br /></td></tr>
@@ -231,9 +245,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a03ead3fe229723b8885cc632cf03dda0 inherit pro_methods_classns3_1_1_agent_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3f8b5828ed0619356bd7259e640dd56 inherit pro_methods_classns3_1_1_agent_application"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_agent_application.html#ae3f8b5828ed0619356bd7259e640dd56">InferAction</a> (uint remoteAppId)</td></tr>
 <tr class="separator:ae3f8b5828ed0619356bd7259e640dd56 inherit pro_methods_classns3_1_1_agent_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae49d167ad77af5ed5a237446203277c4 inherit pro_methods_classns3_1_1_agent_application"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_agent_application.html#ae49d167ad77af5ed5a237446203277c4">OnRecvFromAgent</a> (uint remoteAppId, Ptr&lt; OpenGymDictContainer &gt; payload)</td></tr>
-<tr class="memdesc:ae49d167ad77af5ed5a237446203277c4 inherit pro_methods_classns3_1_1_agent_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a message is received from an agent.  <a href="classns3_1_1_agent_application.html#ae49d167ad77af5ed5a237446203277c4">More...</a><br /></td></tr>
-<tr class="separator:ae49d167ad77af5ed5a237446203277c4 inherit pro_methods_classns3_1_1_agent_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classns3_1_1_rl_application"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classns3_1_1_rl_application')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classns3_1_1_rl_application.html">ns3::RlApplication</a></td></tr>
 <tr class="memitem:add1c8bd236bd1b112eb3202305ca3398 inherit pro_methods_classns3_1_1_rl_application"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_rl_application.html#add1c8bd236bd1b112eb3202305ca3398">Send</a> (Ptr&lt; OpenGymDictContainer &gt; data, const InterfaceMap &amp;interfaces)</td></tr>
 <tr class="memdesc:add1c8bd236bd1b112eb3202305ca3398 inherit pro_methods_classns3_1_1_rl_application"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to the specified interfaces if the application is currently running. This method is not atomic. It might happen that <code>data</code> is only sent to some RlApplications if <code>m_running</code> changes to <code>false</code>.  <a href="classns3_1_1_rl_application.html#add1c8bd236bd1b112eb3202305ca3398">More...</a><br /></td></tr>
@@ -301,9 +312,58 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a51a1512dd9963bff4ba5c4ff37b6d406 inherit pro_attribs_classns3_1_1_rl_application"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="base-test_8h_source.html#l00115">115</a> of file <a class="el" href="base-test_8h_source.html">base-test.h</a>.</p>
+<div class="textblock"><p>Simple <a class="el" href="classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network.">AgentApplication</a> that can be reused for tests. </p>
+
+<p class="definition">Definition at line <a class="el" href="base-test_8h_source.html#l00185">185</a> of file <a class="el" href="base-test_8h_source.html">base-test.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3d493c9fc22fbca5672c7d3f0bec89d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d493c9fc22fbca5672c7d3f0bec89d5">&#9670;&nbsp;</a></span>OnRecvFromAgent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ns3::TestAgentApp::OnRecvFromAgent </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>remoteAppId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Ptr&lt; OpenGymDictContainer &gt;&#160;</td>
+          <td class="paramname"><em>payload</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when a message is received from an agent. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">remoteAppId</td><td>ID of the <a class="el" href="classns3_1_1_reward_application.html" title="This application is installed on a node where rewards are calculated.">RewardApplication</a> from which the reward was received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="classns3_1_1_agent_application.html#ae49d167ad77af5ed5a237446203277c4">ns3::AgentApplication</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="base-test_8cc_source.html#l00268">268</a> of file <a class="el" href="base-test_8cc_source.html">base-test.cc</a>.</p>
+
+</div>
+</div>
 <a id="af83370782f33936c4ca9723b0556921e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af83370782f33936c4ca9723b0556921e">&#9670;&nbsp;</a></span>OnRecvObs()</h2>
 
@@ -338,7 +398,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Implements <a class="el" href="classns3_1_1_agent_application.html#a3fcb137eedba93b1d1d4f9e62743f028">ns3::AgentApplication</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="base-test_8cc_source.html#l00144">144</a> of file <a class="el" href="base-test_8cc_source.html">base-test.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base-test_8cc_source.html#l00254">254</a> of file <a class="el" href="base-test_8cc_source.html">base-test.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="history-container_8cc_source.html#l00147">ns3::HistoryContainer::AggregateNewest()</a>, and <a class="el" href="agent-application_8h_source.html#l00176">ns3::AgentApplication::m_obsDataStruct</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -390,7 +450,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Implements <a class="el" href="classns3_1_1_agent_application.html#af7103a6a389e425b913af25b3d58a6f1">ns3::AgentApplication</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="base-test_8cc_source.html#l00150">150</a> of file <a class="el" href="base-test_8cc_source.html">base-test.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base-test_8cc_source.html#l00261">261</a> of file <a class="el" href="base-test_8cc_source.html">base-test.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="history-container_8cc_source.html#l00147">ns3::HistoryContainer::AggregateNewest()</a>, and <a class="el" href="agent-application_8h_source.html#l00177">ns3::AgentApplication::m_rewardDataStruct</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classns3_1_1_test_agent_app_a60385b2d399c08a847fac0e30aa393b0_cgraph.png" border="0" usemap="#aclassns3_1_1_test_agent_app_a60385b2d399c08a847fac0e30aa393b0_cgraph" alt=""/></div>
+<map name="aclassns3_1_1_test_agent_app_a60385b2d399c08a847fac0e30aa393b0_cgraph" id="aclassns3_1_1_test_agent_app_a60385b2d399c08a847fac0e30aa393b0_cgraph">
+<area shape="rect" title="Called when a reward was received. The reward was already stored in m_rewardDataStruct." alt="" coords="5,5,156,47"/>
+<area shape="rect" href="classns3_1_1_history_container.html#ab1fa72494ba71cff900c6ce9ec69fcc2" title="Aggregate the latest n data entries of the specified history deque." alt="" coords="204,5,367,47"/>
+<area shape="rect" href="classns3_1_1_history_container.html#aa41852451a04848e5f0d111410a8671d" title="Retrieve the latest n collected data entries of one history deque." alt="" coords="415,5,577,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -404,7 +478,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ns3</b></li><li class="navelem"><a class="el" href="classns3_1_1_test_agent_app.html">TestAgentApp</a></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

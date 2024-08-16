@@ -38,7 +38,9 @@ var namespaces_dup =
           [ "env", "namespacedefiance_1_1test_1_1test__marl__interface.html#afc436b97402079e8b6b2e4635a3a6aaa", null ],
           [ "only", "namespacedefiance_1_1test_1_1test__marl__interface.html#a206d2600c3cdd52fe1b6d52ef62c4ec6", null ],
           [ "test_ai_interface", "namespacedefiance_1_1test_1_1test__marl__interface.html#aa72f37820779dbf77f867e9afdf402a2", null ],
+          [ "test_counting_agent", "namespacedefiance_1_1test_1_1test__marl__interface.html#a0d72f5dea51a9e0fa16c13f74fd36565", null ],
           [ "test_echo_interface", "namespacedefiance_1_1test_1_1test__marl__interface.html#ac294ad733bb75ad8707bafab77070b5e", null ],
+          [ "COUNTING_AGENT_APP_LIMIT", "namespacedefiance_1_1test_1_1test__marl__interface.html#a0eae430b45e6d0fc4463c9225c9ee39e", null ],
           [ "NS3AI_TEST_SUITES", "namespacedefiance_1_1test_1_1test__marl__interface.html#a048bb9019bab9e988526bb5ac4358541", null ],
           [ "T", "namespacedefiance_1_1test_1_1test__marl__interface.html#a48a0d1fa18a9dd5dd6855492349e241f", null ]
         ] ]
@@ -139,8 +141,11 @@ var namespaces_dup =
       [ "SocketCommunicationAttributes", "structns3_1_1_socket_communication_attributes.html", "structns3_1_1_socket_communication_attributes" ],
       [ "StaticMobComEnv", "classns3_1_1_static_mob_com_env.html", "classns3_1_1_static_mob_com_env" ],
       [ "SumoMobComEnv", "classns3_1_1_sumo_mob_com_env.html", null ],
+      [ "TestActionApp", "classns3_1_1_test_action_app.html", "classns3_1_1_test_action_app" ],
       [ "TestAgentApp", "classns3_1_1_test_agent_app.html", "classns3_1_1_test_agent_app" ],
+      [ "TestDataCollectorApp", "classns3_1_1_test_data_collector_app.html", "classns3_1_1_test_data_collector_app" ],
       [ "TestObservationApp", "classns3_1_1_test_observation_app.html", "classns3_1_1_test_observation_app" ],
+      [ "TestRewardApp", "classns3_1_1_test_reward_app.html", "classns3_1_1_test_reward_app" ],
       [ "TimestampedData", "classns3_1_1_timestamped_data.html", "classns3_1_1_timestamped_data" ],
       [ "TimestampedDataDeque", "classns3_1_1_timestamped_data_deque.html", "classns3_1_1_timestamped_data_deque" ],
       [ "TopologyCreator", "classns3_1_1_topology_creator.html", "classns3_1_1_topology_creator" ],
@@ -190,6 +195,7 @@ var namespaces_dup =
       [ "locationFinder", "topology-creator_8cc.html#af10e1643c27e407b17a0221309e69f4f", null ],
       [ "noopCallback", "base-test_8cc.html#ada6003e5241b8efe661bb03502ee4bbf", null ],
       [ "pathToNs3", "topology-creator_8cc.html#abcf9e895c430ae12d4608f97ff7fcd82", null ],
-      [ "scenarioHelper", "topology-creator_8cc.html#a79fff921a98ef3a0e5d09f73e0c1ca3f", null ]
+      [ "scenarioHelper", "topology-creator_8cc.html#a79fff921a98ef3a0e5d09f73e0c1ca3f", null ],
+      [ "sSocketChannelInterfaceTestSuite", "socket-channel-interface-test_8cc.html#a27579a0ee027b3a46630ab2015b37453", null ]
     ] ]
 ];

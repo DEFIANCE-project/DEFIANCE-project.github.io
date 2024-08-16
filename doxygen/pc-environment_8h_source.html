@@ -105,57 +105,57 @@ $(document).ready(function(){initNavTree('pc-environment_8h_source.html',''); in
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>ns3</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classns3_1_1_power_control_mob_com_env.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_power_control_mob_com_env.html">PowerControlMobComEnv</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_mob_com_env.html">MobComEnv</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">using</span> MobComEnv::MobComEnv;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="comment">// gym interface</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetActionSpace() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetObservationSpace() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    Ptr&lt;OpenGymDataContainer&gt; GetObservation() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">float</span> GetReward() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> ExecuteActions(Ptr&lt;OpenGymDataContainer&gt; action) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::map&lt;std::string, std::string&gt; GetExtraInfo() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// ns3 related code</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#ae510029c7055512daecdfb86383fbaf7">SetupScenario</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#aa0292bb5860a79505a9c1b3c06aa2f0e">SetScenarioAttributes</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a724ecdfcec53a060702560417163016e">CreateTopology</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a4cf373cd450663c96eb80ce500e66680">AddTraffic</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a00b77138ebb649809e854578050eb479">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// class specific helper methods and attributes</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> CreateBsLine(uint16_t numBSs, uint64_t lineLength);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> CreateRandomFixedTopology(uint16_t numUEs, uint16_t numBSs, uint64_t lineLength);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> CreateSimpleTopology(Vector position, Vector velocity);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> CreateMultiBsTopology();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> ParseCliArgs(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// static bool SetValue(const std::string &amp; val);</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    std::vector&lt;uint32_t&gt; GetObservationShape();</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classns3_1_1_power_control_mob_com_env.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classns3_1_1_power_control_mob_com_env.html">PowerControlMobComEnv</a> : <span class="keyword">public</span> <a class="code" href="classns3_1_1_mob_com_env.html">MobComEnv</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">using</span> MobComEnv::MobComEnv;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// gym interface</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetActionSpace() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    Ptr&lt;OpenGymSpace&gt; GetObservationSpace() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    Ptr&lt;OpenGymDataContainer&gt; GetObservation() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> GetReward() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> ExecuteActions(Ptr&lt;OpenGymDataContainer&gt; action) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    std::map&lt;std::string, std::string&gt; GetExtraInfo() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// ns3 related code</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#ae510029c7055512daecdfb86383fbaf7">SetupScenario</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#aa0292bb5860a79505a9c1b3c06aa2f0e">SetScenarioAttributes</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a724ecdfcec53a060702560417163016e">CreateTopology</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a4cf373cd450663c96eb80ce500e66680">AddTraffic</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classns3_1_1_power_control_mob_com_env.html#a00b77138ebb649809e854578050eb479">RegisterCallbacks</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// class specific helper methods and attributes</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> CreateBsLine(uint16_t numBSs, uint64_t lineLength);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> CreateRandomFixedTopology(uint16_t numUEs, uint16_t numBSs, uint64_t lineLength);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> CreateSimpleTopology(Vector position, Vector velocity);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> CreateMultiBsTopology();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::map&lt;std::string, std::string&gt; sinrVecToMap();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;std::vector&lt;float&gt;&gt; sinrs;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;float&gt; powers;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::vector&lt;float&gt; powersMeasured;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> cbCalls = 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> ParseCliArgs(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// static bool SetValue(const std::string &amp; val);</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    std::vector&lt;uint32_t&gt; GetObservationShape();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::map&lt;std::string, std::string&gt; sinrVecToMap();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">double</span> arg_speed = 0;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::string arg_topology = <span class="stringliteral">&quot;simple&quot;</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">double</span> arg_noiseFigure = 9;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::string arg_propagationModel = <span class="stringliteral">&quot;ns3::FriisPropagationLossModel&quot;</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::string arg_handoverAlgorithm = <span class="stringliteral">&quot;ns3::NoOpHandoverAlgorithm&quot;</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">float</span> sinrThreshold;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace ns3</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PC_ENVIRONMENT_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassns3_1_1_mob_com_env_html"><div class="ttname"><a href="classns3_1_1_mob_com_env.html">ns3::MobComEnv</a></div><div class="ttdef"><b>Definition:</b> <a href="base-environment_8h_source.html#l00023">base-environment.h:24</a></div></div>
-<div class="ttc" id="aclassns3_1_1_power_control_mob_com_env_html"><div class="ttname"><a href="classns3_1_1_power_control_mob_com_env.html">ns3::PowerControlMobComEnv</a></div><div class="ttdef"><b>Definition:</b> <a href="pc-environment_8h_source.html#l00017">pc-environment.h:18</a></div></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::vector&lt;std::vector&lt;float&gt;&gt; sinrs;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::vector&lt;float&gt; powers;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::vector&lt;float&gt; powersMeasured;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> cbCalls = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">double</span> arg_speed = 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::string arg_topology = <span class="stringliteral">&quot;simple&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">double</span> arg_noiseFigure = 9;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    std::string arg_propagationModel = <span class="stringliteral">&quot;ns3::FriisPropagationLossModel&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::string arg_handoverAlgorithm = <span class="stringliteral">&quot;ns3::NoOpHandoverAlgorithm&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">float</span> sinrThreshold;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">// namespace ns3</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PC_ENVIRONMENT_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassns3_1_1_mob_com_env_html"><div class="ttname"><a href="classns3_1_1_mob_com_env.html">ns3::MobComEnv</a></div><div class="ttdoc">Environment specifically designed to train mobile communication related tasks.</div><div class="ttdef"><b>Definition:</b> <a href="base-environment_8h_source.html#l00023">base-environment.h:24</a></div></div>
+<div class="ttc" id="aclassns3_1_1_power_control_mob_com_env_html"><div class="ttname"><a href="classns3_1_1_power_control_mob_com_env.html">ns3::PowerControlMobComEnv</a></div><div class="ttdoc">Single agent environment for training power control with reinforcement learning.</div><div class="ttdef"><b>Definition:</b> <a href="pc-environment_8h_source.html#l00022">pc-environment.h:23</a></div></div>
 <div class="ttc" id="aclassns3_1_1_power_control_mob_com_env_html_a00b77138ebb649809e854578050eb479"><div class="ttname"><a href="classns3_1_1_power_control_mob_com_env.html#a00b77138ebb649809e854578050eb479">ns3::PowerControlMobComEnv::RegisterCallbacks</a></div><div class="ttdeci">void RegisterCallbacks() override</div><div class="ttdoc">Register the necessary callbacks for tracing.</div><div class="ttdef"><b>Definition:</b> <a href="pc-simulation_8cc_source.html#l00060">pc-simulation.cc:60</a></div></div>
 <div class="ttc" id="aclassns3_1_1_power_control_mob_com_env_html_a4cf373cd450663c96eb80ce500e66680"><div class="ttname"><a href="classns3_1_1_power_control_mob_com_env.html#a4cf373cd450663c96eb80ce500e66680">ns3::PowerControlMobComEnv::AddTraffic</a></div><div class="ttdeci">void AddTraffic() override</div><div class="ttdoc">Overwrite to add internet traffic to the scenario. Include 1. Routing and IPs, 2. Attaching UEs and e...</div><div class="ttdef"><b>Definition:</b> <a href="pc-environment_8cc_source.html#l00176">pc-environment.cc:176</a></div></div>
 <div class="ttc" id="aclassns3_1_1_power_control_mob_com_env_html_a724ecdfcec53a060702560417163016e"><div class="ttname"><a href="classns3_1_1_power_control_mob_com_env.html#a724ecdfcec53a060702560417163016e">ns3::PowerControlMobComEnv::CreateTopology</a></div><div class="ttdeci">void CreateTopology() override</div><div class="ttdoc">Fill containers for UEs and base stations. The specific topology has to be specified in the child cla...</div><div class="ttdef"><b>Definition:</b> <a href="pc-environment_8cc_source.html#l00013">pc-environment.cc:13</a></div></div>
@@ -167,7 +167,7 @@ $(document).ready(function(){initNavTree('pc-environment_8h_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_1f50d7e812aaf02fe1f6ffa810a46fa7.html">lte-learning</a></li><li class="navelem"><b>pc-environment.h</b></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

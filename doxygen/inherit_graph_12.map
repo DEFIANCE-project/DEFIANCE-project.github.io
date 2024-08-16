@@ -1,10 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network." alt="" coords="5,31,169,57"/>
-<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="219,31,358,57"/>
-<area shape="rect" id="node4" href="$classns3_1_1_test_agent_app.html" title=" " alt="" coords="217,81,360,108"/>
-<area shape="rect" id="node3" href="$classns3_1_1_action_application.html" title="This application is installed on a node where actions are applied." alt="" coords="432,5,599,32"/>
-<area shape="rect" id="node5" href="$classns3_1_1_data_collector_application.html" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="408,56,623,83"/>
-<area shape="rect" id="node6" href="$classns3_1_1_observation_application.html" title="This application is installed on a node where observations occur." alt="" coords="671,31,876,57"/>
-<area shape="rect" id="node8" href="$classns3_1_1_reward_application.html" title="This application is installed on a node where rewards are calculated." alt="" coords="686,81,861,108"/>
-<area shape="rect" id="node7" href="$classns3_1_1_test_observation_app.html" title=" " alt="" coords="924,31,1107,57"/>
+<area shape="rect" id="node1" href="$classns3_1_1_test_action_app.html" title="Simple ActionApplication that can be reused for tests." alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications." alt="" coords="199,56,337,83"/>
+<area shape="rect" id="node3" href="$classns3_1_1_action_application.html" title="This application is installed on a node where actions are applied." alt="" coords="409,5,576,32"/>
+<area shape="rect" id="node4" href="$classns3_1_1_agent_application.html" title="This application is installed on a node on which the RL agent is to be placed in the network." alt="" coords="411,56,575,83"/>
+<area shape="rect" id="node6" href="$classns3_1_1_data_collector_application.html" title="This application is installed on a node where something is observed, possibly processed and sent to a..." alt="" coords="385,119,600,145"/>
+<area shape="rect" id="node5" href="$classns3_1_1_test_agent_app.html" title="Simple AgentApplication that can be reused for tests." alt="" coords="679,43,822,69"/>
+<area shape="rect" id="node7" href="$classns3_1_1_observation_application.html" title="This application is installed on a node where observations occur." alt="" coords="648,93,853,120"/>
+<area shape="rect" id="node9" href="$classns3_1_1_reward_application.html" title="This application is installed on a node where rewards are calculated." alt="" coords="663,144,838,171"/>
+<area shape="rect" id="node11" href="$classns3_1_1_test_data_collector_app.html" title="Simple DataCollecorApplication that can be reused for tests." alt="" coords="654,195,847,221"/>
+<area shape="rect" id="node8" href="$classns3_1_1_test_observation_app.html" title="Simple ObservationApplication that can be reused for tests." alt="" coords="901,93,1084,120"/>
+<area shape="rect" id="node10" href="$classns3_1_1_test_reward_app.html" title="Simple RewardApplication that can be reused for tests." alt="" coords="916,144,1069,171"/>
 </map>

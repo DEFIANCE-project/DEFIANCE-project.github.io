@@ -1,0 +1,4 @@
+<map id="ns3::RlApplication::SetDefaultAddress" name="ns3::RlApplication::SetDefaultAddress">
+<area shape="rect" id="node1" title="Set default IP address that is used for new interfaces." alt="" coords="192,5,343,47"/>
+<area shape="rect" id="node2" href="$classns3_1_1_rl_application.html#a3f834b0a88561a229e4307605bec49fc" title="Called after configuration is finished." alt="" coords="5,5,144,47"/>
+</map>

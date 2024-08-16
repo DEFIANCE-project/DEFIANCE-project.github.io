@@ -25,13 +25,15 @@
 var NAVTREE =
 [
   [ "defiance", "index.html", [
-    [ "DeepCoMP with ns3-mmWave and ns3-ai", "index.html", [
-      [ "Setup the development environment", "index.html#autotoc_md19", [
-        [ "Installation with <tt>bake</tt>", "index.html#autotoc_md20", null ],
-        [ "Installation without <tt>bake</tt>", "index.html#autotoc_md21", null ],
-        [ "Development tools", "index.html#autotoc_md22", null ]
+    [ "DEFIANCE project: How to Simulate MARL Deployments in Realistic Network Scenarios", "index.html", [
+      [ "About the ns3-defiance repository", "index.html#autotoc_md19", null ],
+      [ "Setup the development environment", "index.html#autotoc_md20", [
+        [ "Installation with <tt>bake</tt>", "index.html#autotoc_md21", null ],
+        [ "Docker", "index.html#autotoc_md22", null ],
+        [ "Installation without <tt>bake</tt>", "index.html#autotoc_md23", null ],
+        [ "Development tools", "index.html#autotoc_md24", null ]
       ] ],
-      [ "About the ns-defiance repository", "index.html#autotoc_md23", null ]
+      [ "Frequent problems", "index.html#autotoc_md25", null ]
     ] ],
     [ "Sumo example", "md__builds_bp_defiance_ns3_defiance_source_ns_3_40_contrib_defiance_examples_sumo_test__r_e_a_d_m_e.html", [
       [ "Installation (skip if in a Devcontainer)", "md__builds_bp_defiance_ns3_defiance_source_ns_3_40_contrib_defiance_examples_sumo_test__r_e_a_d_m_e.html#autotoc_md1", [
@@ -85,9 +87,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"classns3_1_1_mob_com_env.html#a12007c4412c499e8db8e47ea0dd137cc",
-"functions_i.html"
+"____init_____8py.html#a1942eedc3c3126d5894f84ef35730a8a",
+"classns3_1_1_mob_com_env.html#a96bd171bdf8bb32a429be275e043d705",
+"find__location_8py.html#ac8854db49754fa1081fdbc7cbeda87b0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,5 @@
 <map id="ns3::RlAppBaseTestCase" name="ns3::RlAppBaseTestCase">
-<area shape="rect" id="node1" title=" " alt="" coords="95,303,276,329"/>
+<area shape="rect" id="node1" title="Base test case class that unifies setup functionality for different tests. This is not a full test ca..." alt="" coords="95,303,276,329"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,191,85,218"/>
 <area shape="rect" id="node3" title=" " alt="" coords="110,191,261,218"/>
 <area shape="rect" id="node4" title=" " alt="" coords="218,95,347,121"/>

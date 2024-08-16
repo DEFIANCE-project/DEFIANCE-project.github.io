@@ -95,6 +95,11 @@ $(document).ready(function(){initNavTree('classns3_1_1_mob_com_env.html',''); in
 <div class="title">ns3::MobComEnv Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="group__defiance.html">defiance</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Environment specifically designed to train mobile communication related tasks.  
+ <a href="classns3_1_1_mob_com_env.html#details">More...</a></p>
+
+<p><code>#include &quot;<a class="el" href="base-environment_8h_source.html">base-environment.h</a>&quot;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for ns3::MobComEnv:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -102,11 +107,11 @@ $(document).ready(function(){initNavTree('classns3_1_1_mob_com_env.html',''); in
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classns3_1_1_mob_com_env__inherit__graph.png" border="0" usemap="#ans3_1_1_mob_com_env_inherit__map" alt="Inheritance graph"/></div>
 <map name="ans3_1_1_mob_com_env_inherit__map" id="ans3_1_1_mob_com_env_inherit__map">
-<area shape="rect" title=" " alt="" coords="160,80,295,107"/>
-<area shape="rect" href="classns3_1_1_power_control_mob_com_env.html" title=" " alt="" coords="5,155,228,181"/>
-<area shape="rect" href="classns3_1_1_static_mob_com_env.html" title=" " alt="" coords="252,155,424,181"/>
+<area shape="rect" title="Environment specifically designed to train mobile communication related tasks." alt="" coords="160,80,295,107"/>
+<area shape="rect" href="classns3_1_1_power_control_mob_com_env.html" title="Single agent environment for training power control with reinforcement learning." alt="" coords="5,155,228,181"/>
+<area shape="rect" href="classns3_1_1_static_mob_com_env.html" title="MobComEnv with static eNodeBs and UEs." alt="" coords="252,155,424,181"/>
 <area shape="rect" title=" " alt="" coords="172,5,283,32"/>
-<area shape="rect" href="classns3_1_1_sumo_mob_com_env.html" title=" " alt="" coords="252,229,424,256"/>
+<area shape="rect" href="classns3_1_1_sumo_mob_com_env.html" title="A MobComEnv with integration with SUMO &#45; Simulation of Urban MObility." alt="" coords="252,229,424,256"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -116,7 +121,7 @@ $(document).ready(function(){initNavTree('classns3_1_1_mob_com_env.html',''); in
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classns3_1_1_mob_com_env__coll__graph.png" border="0" usemap="#ans3_1_1_mob_com_env_coll__map" alt="Collaboration graph"/></div>
 <map name="ans3_1_1_mob_com_env_coll__map" id="ans3_1_1_mob_com_env_coll__map">
-<area shape="rect" title=" " alt="" coords="72,95,207,121"/>
+<area shape="rect" title="Environment specifically designed to train mobile communication related tasks." alt="" coords="72,95,207,121"/>
 <area shape="rect" title=" " alt="" coords="5,5,116,32"/>
 <area shape="rect" href="classns3_1_1_device_manager.html" title="Contains the information about the nodes and devices of the simulation. Maintains subsets ot these no..." alt="" coords="141,5,295,32"/>
 </map>
@@ -125,7 +130,7 @@ $(document).ready(function(){initNavTree('classns3_1_1_mob_com_env.html',''); in
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3d8be8f03c61d85520c1dcabbfde472e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_mob_com_env.html#a3d8be8f03c61d85520c1dcabbfde472e">MobComEnv</a> (Time simulationDuration, Time notificationRate, Time notificationStart)</td></tr>
-<tr class="memdesc:a3d8be8f03c61d85520c1dcabbfde472e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classns3_1_1_mob_com_env.html">MobComEnv</a> class.  <a href="classns3_1_1_mob_com_env.html#a3d8be8f03c61d85520c1dcabbfde472e">More...</a><br /></td></tr>
+<tr class="memdesc:a3d8be8f03c61d85520c1dcabbfde472e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classns3_1_1_mob_com_env.html" title="Environment specifically designed to train mobile communication related tasks.">MobComEnv</a> class.  <a href="classns3_1_1_mob_com_env.html#a3d8be8f03c61d85520c1dcabbfde472e">More...</a><br /></td></tr>
 <tr class="separator:a3d8be8f03c61d85520c1dcabbfde472e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12007c4412c499e8db8e47ea0dd137cc"><td class="memItemLeft" align="right" valign="top"><a id="a12007c4412c499e8db8e47ea0dd137cc"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DoDispose</b> () override</td></tr>
@@ -218,7 +223,8 @@ const Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <tr class="separator:afbf23168313189b23192dced05431e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
+<div class="textblock"><p>Environment specifically designed to train mobile communication related tasks. </p>
+
 <p class="definition">Definition at line <a class="el" href="base-environment_8h_source.html#l00023">23</a> of file <a class="el" href="base-environment_8h_source.html">base-environment.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a3d8be8f03c61d85520c1dcabbfde472e"></a>
@@ -253,7 +259,7 @@ const Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
       </table>
 </div><div class="memdoc">
 
-<p>Constructor for the <a class="el" href="classns3_1_1_mob_com_env.html">MobComEnv</a> class. </p>
+<p>Constructor for the <a class="el" href="classns3_1_1_mob_com_env.html" title="Environment specifically designed to train mobile communication related tasks.">MobComEnv</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">simulationDuration</td><td>the maximum of the simulation. </td></tr>
@@ -519,7 +525,7 @@ const Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ns3</b></li><li class="navelem"><a class="el" href="classns3_1_1_mob_com_env.html">MobComEnv</a></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

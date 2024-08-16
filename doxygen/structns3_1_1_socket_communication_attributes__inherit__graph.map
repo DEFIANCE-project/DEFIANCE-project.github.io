@@ -1,4 +1,4 @@
 <map id="ns3::SocketCommunicationAttributes" name="ns3::SocketCommunicationAttributes">
-<area shape="rect" id="node1" title=" " alt="" coords="16,80,215,121"/>
-<area shape="rect" id="node2" href="$structns3_1_1_communication_attributes.html" title=" " alt="" coords="5,5,225,32"/>
+<area shape="rect" id="node1" title="CommunicationAttributes needed for information exchange over a SocketChannelInterface." alt="" coords="16,80,215,121"/>
+<area shape="rect" id="node2" href="$structns3_1_1_communication_attributes.html" title="Common parameters used for communication between RlApplications over a ChannelInterface." alt="" coords="5,5,225,32"/>
 </map>

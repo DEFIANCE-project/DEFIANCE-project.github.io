@@ -132,13 +132,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9337c93fe5d7eff7145c240e7bbe4578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6735cfcaca4d75972c763d7b44cedcd4"><td class="memItemLeft" align="right" valign="top"><a id="a6735cfcaca4d75972c763d7b44cedcd4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#a6735cfcaca4d75972c763d7b44cedcd4">Configure</a> ()</td></tr>
-<tr class="memdesc:a6735cfcaca4d75972c763d7b44cedcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls <code>Setup()</code> on all RlApplications registered in this helper. Should be called after all communications are set. <br /></td></tr>
+<tr class="memdesc:a6735cfcaca4d75972c763d7b44cedcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls <code>Setup()</code> on all RlApplications registered in this helper. Should be called after all RlApplications were set. <br /></td></tr>
 <tr class="separator:a6735cfcaca4d75972c763d7b44cedcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03397b79cb5e547c105568e76f29e56d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#a03397b79cb5e547c105568e76f29e56d">DeleteCommunication</a> (<a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> localAppId, <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> remoteAppId, uint localInterfaceId=0, uint remoteInterfaceId=0)</td></tr>
 <tr class="memdesc:a03397b79cb5e547c105568e76f29e56d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the communication connection between two RlApplications including the two interfaces.  <a href="classns3_1_1_communication_helper.html#a03397b79cb5e547c105568e76f29e56d">More...</a><br /></td></tr>
 <tr class="separator:a03397b79cb5e547c105568e76f29e56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e64af46d27373c65398a484d9adcbbb"><td class="memItemLeft" align="right" valign="top">Ptr&lt; <a class="el" href="classns3_1_1_rl_application.html">RlApplication</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#a2e64af46d27373c65398a484d9adcbbb">GetApp</a> (<a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> id)</td></tr>
-<tr class="memdesc:a2e64af46d27373c65398a484d9adcbbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the corresponding <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a> for this <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> by looking it up in the right <a class="el" href="classns3_1_1_rl_application_container.html" title="Instances of this class hold a vector of ns3::Application pointers.">RlApplicationContainer</a>.  <a href="classns3_1_1_communication_helper.html#a2e64af46d27373c65398a484d9adcbbb">More...</a><br /></td></tr>
+<tr class="memdesc:a2e64af46d27373c65398a484d9adcbbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the corresponding <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a> for this <a class="el" href="structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff...">RlApplicationId</a> by looking it up in the right <a class="el" href="classns3_1_1_rl_application_container.html" title="Instances of this class hold a vector of ns3::Application pointers.">RlApplicationContainer</a>.  <a href="classns3_1_1_communication_helper.html#a2e64af46d27373c65398a484d9adcbbb">More...</a><br /></td></tr>
 <tr class="separator:a2e64af46d27373c65398a484d9adcbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90bb40d201be94249fe1154f98132b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#a90bb40d201be94249fe1154f98132b7f">SetActionApps</a> (<a class="el" href="classns3_1_1_rl_application_container.html">RlApplicationContainer</a> actionApps)</td></tr>
 <tr class="memdesc:a90bb40d201be94249fe1154f98132b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ActionApps which are available in the scenario.  <a href="classns3_1_1_communication_helper.html#a90bb40d201be94249fe1154f98132b7f">More...</a><br /></td></tr>
@@ -147,7 +147,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a739bb2ee4af636141b12d101ec30b0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the AgentApps which are available in the scenario.  <a href="classns3_1_1_communication_helper.html#a739bb2ee4af636141b12d101ec30b0a2">More...</a><br /></td></tr>
 <tr class="separator:a739bb2ee4af636141b12d101ec30b0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f282a0a24f998b8cb47fa847901cbb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#a5f282a0a24f998b8cb47fa847901cbb8">SetIds</a> ()</td></tr>
-<tr class="memdesc:a5f282a0a24f998b8cb47fa847901cbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a unique <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> to all RlApplications registered in this helper. Should be called before communications are set, so that IDs can already be used there.  <a href="classns3_1_1_communication_helper.html#a5f282a0a24f998b8cb47fa847901cbb8">More...</a><br /></td></tr>
+<tr class="memdesc:a5f282a0a24f998b8cb47fa847901cbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a unique <a class="el" href="structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff...">RlApplicationId</a> to all RlApplications registered in this helper. Should be called before communications are set, so that IDs can already be used there.  <a href="classns3_1_1_communication_helper.html#a5f282a0a24f998b8cb47fa847901cbb8">More...</a><br /></td></tr>
 <tr class="separator:a5f282a0a24f998b8cb47fa847901cbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb39b77f70a54f6ae2117f2da6c7f666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1_communication_helper.html#abb39b77f70a54f6ae2117f2da6c7f666">SetObservationApps</a> (<a class="el" href="classns3_1_1_rl_application_container.html">RlApplicationContainer</a> observationApps)</td></tr>
 <tr class="memdesc:abb39b77f70a54f6ae2117f2da6c7f666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the ObservationApps which are available in the scenario.  <a href="classns3_1_1_communication_helper.html#abb39b77f70a54f6ae2117f2da6c7f666">More...</a><br /></td></tr>
@@ -171,7 +171,7 @@ Protected Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helper to setup communication between RlApplications. </p>
 
-<p class="definition">Definition at line <a class="el" href="communication-helper_8h_source.html#l00056">56</a> of file <a class="el" href="communication-helper_8h_source.html">communication-helper.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="communication-helper_8h_source.html#l00072">72</a> of file <a class="el" href="communication-helper_8h_source.html">communication-helper.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9337c93fe5d7eff7145c240e7bbe4578"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9337c93fe5d7eff7145c240e7bbe4578">&#9670;&nbsp;</a></span>AddCommunication()</h2>
@@ -192,7 +192,7 @@ Protected Member Functions</h2></td></tr>
 <p>Connect specified RlApplications. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">communicationPairs</td><td>includes a <a class="el" href="structns3_1_1_communication_pair.html">CommunicationPair</a> for every connection to be made, <code>clientId</code> corresponds to ID of the first <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a>, <code>serverId</code> to that of the second one. </td></tr>
+    <tr><td class="paramname">communicationPairs</td><td>includes a <a class="el" href="structns3_1_1_communication_pair.html" title="Hold information for constructing a ChannelInterface between two RlApplications. Depending on the att...">CommunicationPair</a> for every connection to be made, <code>clientId</code> corresponds to ID of the first <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a>, <code>serverId</code> to that of the second one. </td></tr>
   </table>
   </dd>
 </dl>
@@ -367,7 +367,7 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the corresponding <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a> for this <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> by looking it up in the right <a class="el" href="classns3_1_1_rl_application_container.html" title="Instances of this class hold a vector of ns3::Application pointers.">RlApplicationContainer</a>. </p>
+<p>Get the corresponding <a class="el" href="classns3_1_1_rl_application.html" title="This class embodies the core functionality of all RL applications.">RlApplication</a> for this <a class="el" href="structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff...">RlApplicationId</a> by looking it up in the right <a class="el" href="classns3_1_1_rl_application_container.html" title="Instances of this class hold a vector of ns3::Application pointers.">RlApplicationContainer</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>the ID to look up. </td></tr>
@@ -508,7 +508,7 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Assigns a unique <a class="el" href="structns3_1_1_rl_application_id.html">RlApplicationId</a> to all RlApplications registered in this helper. Should be called before communications are set, so that IDs can already be used there. </p>
+<p>Assigns a unique <a class="el" href="structns3_1_1_rl_application_id.html" title="An unique identifier for every RlApplication. Used e.g. by the ChannelInterface to differentiate diff...">RlApplicationId</a> to all RlApplications registered in this helper. Should be called before communications are set, so that IDs can already be used there. </p>
 <p>This assigns the IDs in increasing order starting at 0. To customize, override this function. </p>
 
 <p class="definition">Definition at line <a class="el" href="communication-helper_8cc_source.html#l00135">135</a> of file <a class="el" href="communication-helper_8cc_source.html">communication-helper.cc</a>.</p>
@@ -594,7 +594,7 @@ Protected Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>ns3</b></li><li class="navelem"><a class="el" href="classns3_1_1_communication_helper.html">CommunicationHelper</a></li>
-    <li class="footer">Generated on Mon Jul 1 2024 19:05:20 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Fri Aug 16 2024 07:37:06 for defiance by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
